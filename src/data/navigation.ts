@@ -8,6 +8,7 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "Quem Somos", to: "/quem-somos" },
       { label: "Por que se Associar", to: "/por-que-se-associar" },
       { label: "Associe-se", to: "/associe-se" },
+      { label: "Associados", to: "/associados" },
     ],
   },
   {
@@ -24,7 +25,6 @@ export const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Acordos Coletivos", to: "/acordos-coletivos" },
       { label: "Legislação", to: "/legislacao" },
-      { label: "Reuniões da Diretoria", to: "/reunioes-diretoria" },
     ],
   },
   {

@@ -17,7 +17,6 @@ import { PARTNERS } from "@/data/partners";
 import { RECENT_ACTIONS, EVENTS } from "@/data/events";
 import { formatDateShort } from "@/lib/format";
 import { MISSION_STATEMENT } from "@/data/history";
-import { BENEFIT_GROUPS } from "@/data/benefits";
 import { ContactSummaryForm } from "@/components/sections/ContactSummaryForm";
 
 const HERO_IMAGE = "/assets/institutional/tipos-de-plasticos.jpg";
@@ -52,7 +51,6 @@ function StatCounter({ stat }: { stat: (typeof STATS)[number] }) {
 export default function Home() {
   const latestNews = NEWS_POSTS.slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
-  const benefitPreview = BENEFIT_GROUPS.slice(0, 3);
   const homeActions = [...RECENT_ACTIONS, ...EVENTS.slice(0, 2)].slice(0, 4);
 
   return (
@@ -139,32 +137,17 @@ export default function Home() {
       </Section>
 
       {/* BENEFÍCIOS resumo */}
-      <Section tone="brand" spacing="lg">
+      <Section tone="brand" spacing="sm">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeader dark eyebrow="Por que se associar" title="Força coletiva para o seu negócio crescer" lead="Representação técnica e política, benefícios exclusivos e proximidade com o ecossistema industrial fluminense." />
             <Link to="/por-que-se-associar" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline">
-              Ver todos os benefícios <ArrowRight size={16} aria-hidden="true" />
+              Ver benefícios <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {benefitPreview.map((group, i) => {
-              const first = group.items[0];
-              if (!first) return null;
-              return (
-                <Reveal key={group.id} delay={i * 90} className="rounded-[var(--radius-md)] border border-white/15 bg-white/5 p-6 h-full transition-colors duration-150 hover:bg-white/10 hover:border-white/30">
-                  <p className="eyebrow text-white/60">{group.title}</p>
-                  <h3 className="mt-3 font-[var(--font-display)] font-semibold text-white leading-snug" style={{ fontSize: "var(--text-h4)" }}>
-                    {first.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-[var(--text-on-brand-muted)] leading-normal">{first.text}</p>
-                </Reveal>
-              );
-            })}
-          </div>
-          <div className="mt-8 md:hidden">
+          <div className="mt-6 md:hidden">
             <Link to="/por-que-se-associar" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline">
-              Ver todos os benefícios <ArrowRight size={16} aria-hidden="true" />
+              Ver benefícios <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </Container>

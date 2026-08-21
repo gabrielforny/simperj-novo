@@ -13,13 +13,14 @@ function initials(name: string): string {
 interface PersonCardProps {
   person: BoardMember;
   dark?: boolean;
+  hidePhoto?: boolean;
 }
 
-export function PersonCard({ person, dark = false }: PersonCardProps) {
+export function PersonCard({ person, dark = false, hidePhoto = false }: PersonCardProps) {
   return (
     <div className={dark ? "border border-white/15 rounded-[var(--radius-md)] overflow-hidden" : "border border-[var(--border)] rounded-[var(--radius-md)] overflow-hidden"}>
       <div className={dark ? "aspect-[4/3] w-full bg-white/5 overflow-hidden" : "aspect-[4/3] w-full bg-[var(--surface)] overflow-hidden"}>
-        {person.photo ? (
+        {person.photo && !hidePhoto ? (
           <img src={person.photo} alt={person.name} loading="lazy" className="h-full w-full object-cover object-top" />
         ) : (
           <div

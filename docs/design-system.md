@@ -18,7 +18,7 @@ Base extraída da logo oficial (azul institucional) + neutros técnicos + verde 
 ```css
 :root {
   /* Marca — azul institucional (da logo oficial) */
-  --brand-primary: #0b3d63;      /* azul petróleo profundo — headers, CTAs primários */
+  --brand-primary: #000936;      /* azul petróleo profundo — headers, CTAs primários */
   --brand-primary-dark: #072844; /* hover/active de primário, fundo hero */
   --brand-primary-light: #e8f0f7;/* fundo sutil, badges sobre branco */
 

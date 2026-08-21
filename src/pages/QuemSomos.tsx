@@ -5,7 +5,6 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
-import { Timeline } from "@/components/sections/Timeline";
 import { PersonCard } from "@/components/cards/PersonCard";
 import { PartnerLogo } from "@/components/cards/PartnerLogo";
 import { Button } from "@/components/ui/Button";
@@ -42,12 +41,20 @@ export default function QuemSomos() {
         </Container>
       </Section>
 
-      {/* TIMELINE */}
+      {/* HISTÓRICO */}
       <Section tone="surface" spacing="lg">
-        <Container>
-          <SectionHeader eyebrow="Nossa história" title="Uma linha do tempo de transformação institucional" />
-          <div className="mt-14">
-            <Timeline entries={TIMELINE} />
+        <Container className="max-w-3xl">
+          <SectionHeader eyebrow="Nossa história" title="Trajetória institucional" />
+          <div className="mt-10 space-y-8">
+            {TIMELINE.map((entry) => (
+              <div key={entry.year} className="border-l-2 border-[var(--brand-primary)] pl-6">
+                <p className="font-[var(--font-display)] font-bold text-[var(--brand-primary)]" style={{ fontSize: "var(--text-h4)" }}>
+                  {entry.year} <span className="font-normal text-[var(--text-muted)]" style={{ fontSize: "var(--text-small)" }}>— {entry.date}</span>
+                </p>
+                <h3 className="mt-1 font-[var(--font-display)] font-semibold text-[var(--text)]">{entry.title}</h3>
+                <p className="mt-2 text-[var(--text-muted)] leading-normal">{entry.text}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>
@@ -59,7 +66,7 @@ export default function QuemSomos() {
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {BOARD.map((member, i) => (
               <Reveal key={member.slug} delay={i * 70}>
-                <PersonCard person={member} dark />
+                <PersonCard person={member} dark hidePhoto />
               </Reveal>
             ))}
           </div>
@@ -68,8 +75,7 @@ export default function QuemSomos() {
             <p className="eyebrow text-white/70">Conselho Fiscal</p>
             <div className="mt-5 grid gap-5 sm:grid-cols-3 max-w-3xl">
               {FISCAL_COUNCIL.map((member) => (
-                <div key={member.slug} className="flex items-center gap-3">
-                  {member.photo && <img src={member.photo} alt={member.name} loading="lazy" className="h-12 w-12 shrink-0 rounded-full object-cover object-top" />}
+                <div key={member.slug}>
                   <span className="text-sm text-white/85 leading-snug">
                     {member.name}
                     <span className="block text-xs text-white/55">{member.company}</span>
@@ -83,14 +89,7 @@ export default function QuemSomos() {
             <p className="eyebrow text-white/70">Conselho Fiscal — Suplentes</p>
             <div className="mt-5 grid gap-5 sm:grid-cols-3 max-w-3xl">
               {FISCAL_COUNCIL_ALTERNATES.map((member) => (
-                <div key={member.slug} className="flex items-center gap-3">
-                  {member.photo ? (
-                    <img src={member.photo} alt={member.name} loading="lazy" className="h-12 w-12 shrink-0 rounded-full object-cover object-top" />
-                  ) : (
-                    <div className="h-12 w-12 shrink-0 rounded-full bg-white/10 flex items-center justify-center text-xs text-white/50" aria-hidden="true">
-                      —
-                    </div>
-                  )}
+                <div key={member.slug}>
                   <span className={`text-sm leading-snug ${member.placeholder ? "text-white/50 italic" : "text-white/85"}`}>
                     {member.name}
                     {member.company && <span className="block text-xs text-white/55 not-italic">{member.company}</span>}

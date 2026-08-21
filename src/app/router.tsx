@@ -10,7 +10,7 @@ const Convenios = lazy(() => import("@/pages/Convenios"));
 const Cursos = lazy(() => import("@/pages/Cursos"));
 const AcordosColetivos = lazy(() => import("@/pages/AcordosColetivos"));
 const Legislacao = lazy(() => import("@/pages/Legislacao"));
-const ReunioesDiretoria = lazy(() => import("@/pages/ReunioesDiretoria"));
+const Associados = lazy(() => import("@/pages/Associados"));
 const Eventos = lazy(() => import("@/pages/Eventos"));
 const Sustentabilidade = lazy(() => import("@/pages/Sustentabilidade"));
 const Materiais = lazy(() => import("@/pages/Materiais"));
@@ -37,11 +37,11 @@ export function AppRouter() {
           <Route path="quem-somos" element={<QuemSomos />} />
           <Route path="por-que-se-associar" element={<PorQueAssociar />} />
           <Route path="associe-se" element={<AssocieSe />} />
+          <Route path="associados" element={<Associados />} />
           <Route path="convenios" element={<Convenios />} />
           <Route path="cursos" element={<Cursos />} />
           <Route path="acordos-coletivos" element={<AcordosColetivos />} />
           <Route path="legislacao" element={<Legislacao />} />
-          <Route path="reunioes-diretoria" element={<ReunioesDiretoria />} />
           <Route path="eventos" element={<Eventos />} />
           <Route path="sustentabilidade" element={<Sustentabilidade />} />
           <Route path="materiais" element={<Materiais />} />

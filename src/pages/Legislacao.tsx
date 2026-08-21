@@ -10,6 +10,24 @@ import { Accordion } from "@/components/ui/Accordion";
 // mescladas em um único hub (docs/content-audit.md §4).
 const TOPICS = [
   {
+    id: "fim-escala-6x1",
+    title: "Fim da escala 6x1",
+    content: (
+      <p className="italic text-[var(--text-muted)]">
+        Conteúdo em atualização — aguardando material oficial do sindicato sobre a proposta de fim da escala 6x1.
+      </p>
+    ),
+  },
+  {
+    id: "nr-1",
+    title: "NR-1 — Gerenciamento de Riscos Ocupacionais",
+    content: (
+      <p className="italic text-[var(--text-muted)]">
+        Conteúdo em atualização — aguardando material oficial do sindicato sobre a NR-1.
+      </p>
+    ),
+  },
+  {
     id: "lei-incentivo-reciclagem",
     title: "Lei de Incentivo à Reciclagem",
     content: (

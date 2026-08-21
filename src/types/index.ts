@@ -59,7 +59,6 @@ export interface BenefitGroup {
 
 export interface Discount {
   label: string;
-  value: string;
 }
 
 export type EventStatus = "aberto" | "em-breve" | "encerrado";
@@ -136,6 +135,13 @@ export interface NewsPost {
   image: string;
   imageAlt: string;
   legacy?: boolean;
+}
+
+export interface Associate {
+  name: string;
+  segment: string;
+  address?: string;
+  whatsapp?: string;
 }
 
 export interface Convenio {

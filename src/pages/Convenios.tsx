@@ -41,6 +41,7 @@ export default function Convenios() {
                   <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
                   <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
                   <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
+                  <p className="mt-3 text-sm font-semibold text-[var(--brand-secondary)]">{c.benefit}</p>
                 </div>
               ))}
             </div>

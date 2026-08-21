@@ -31,7 +31,7 @@ Convenção de STATUS:
 | https://www.simperj.org.br/eventos-nacionais-em-2021/ | /eventos | 301 (merge) |
 | https://www.simperj.org.br/eventos-online-em-2021/ | /eventos | 301 (merge) |
 | https://www.simperj.org.br/reunioes-gerais/ | /eventos | 301 (merge) |
-| https://www.simperj.org.br/reunioes-da-diretoria/ | /reunioes-diretoria | 301 (renomeada) |
+| https://www.simperj.org.br/reunioes-da-diretoria/ | /quem-somos | 301 (página removida a pedido do cliente em 2026-08-21) |
 | https://www.simperj.org.br/comunicado-negociacao-coletiva-rio-de-janeiro-20202021/ | /acordos-coletivos | 301 (merge) |
 | https://www.simperj.org.br/acordos-coletivos/ | /acordos-coletivos | 200 (preservada) |
 | https://www.simperj.org.br/politica-de-privacidade/ | /politica-de-privacidade | 200 (preservada) |

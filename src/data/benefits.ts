@@ -2,6 +2,9 @@ import type { BenefitGroup, Discount } from "@/types";
 
 // Fonte: /por-que-se-associar/ (texto corrido original) reagrupado por tema,
 // conforme pedido do briefing (docs/content-audit.md §1).
+// Nota: cliente pediu para retirar os percentuais de desconto anteriormente
+// exibidos aqui (material desatualizado); descrições ficam qualitativas até
+// que o SIMPERJ envie a tabela de condições atualizada.
 export const BENEFIT_GROUPS: BenefitGroup[] = [
   {
     id: "representatividade",
@@ -23,7 +26,7 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     items: [
       {
         title: "Participação em feiras do setor",
-        text: "Oportunidade de expor em feiras nacionais, em estande do sindicato, com baixo custo e pagamento parcelado.",
+        text: "Oportunidade de expor em feiras nacionais, em estande do sindicato, com condições facilitadas de pagamento.",
       },
       {
         title: "Divulgação gratuita",
@@ -59,7 +62,7 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
       },
       {
         title: "Educação profissional (SENAI)",
-        text: "Descontos de até 25% para turmas fechadas patrocinadas pela empresa, e de 15% para alunos em turmas nas Unidades Operacionais do SENAI.",
+        text: "Condições especiais para turmas fechadas patrocinadas pela empresa e para alunos em turmas nas Unidades Operacionais do SENAI.",
       },
     ],
   },
@@ -69,15 +72,15 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     items: [
       {
         title: "Programas de Saúde Ocupacional (SESI)",
-        text: "Descontos no PCMSO: 25% na taxa de manutenção, 10% no custo total do documento base, 40% em exames laboratoriais e 30% em exames radiológicos.",
+        text: "Condições especiais no PCMSO, incluindo manutenção do programa, documento base e exames laboratoriais e radiológicos.",
       },
       {
         title: "PPRA (SESI)",
-        text: "Isenção de documento base e desconto de 25% em avaliações de risco pontuais (ruído, iluminância, temperatura, gases e vapores).",
+        text: "Isenção de documento base e condições especiais em avaliações de risco pontuais (ruído, iluminância, temperatura, gases e vapores).",
       },
       {
         title: "Odontologia (SESI)",
-        text: "Descontos entre 10% e 15% na contratação das Unidades Móveis Odontológicas.",
+        text: "Condições especiais na contratação das Unidades Móveis Odontológicas.",
       },
     ],
   },
@@ -91,11 +94,11 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
       },
       {
         title: "Assessoria Tecnológica",
-        text: "Desconto de 20% no ato da contratação dos serviços de consultoria tecnológica.",
+        text: "Condições especiais na contratação dos serviços de consultoria tecnológica.",
       },
       {
         title: "Pesquisa Salarial",
-        text: "Desconto de 40% no ato da contratação dos serviços de pesquisa salarial.",
+        text: "Condições especiais na contratação dos serviços de pesquisa salarial.",
       },
     ],
   },
@@ -105,31 +108,30 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     items: [
       {
         title: "Educação Básica (SESI)",
-        text: "Desconto de 15% no ensino fundamental e 5% no ensino médio, com todo material didático oferecido pelo SESI.",
+        text: "Condições especiais no ensino fundamental e médio, com todo material didático oferecido pelo SESI.",
       },
       {
         title: "Certificados de Origem (FIRJAN)",
-        text: "Desconto de 15% na emissão de certificados de origem.",
+        text: "Condições especiais na emissão de certificados de origem.",
       },
       {
         title: "Esporte e Lazer — SESI Clube",
-        text: "Convênio com desconto em folha de pagamento; categoria familiar com 18% de desconto.",
+        text: "Convênio com condições especiais em folha de pagamento, inclusive para a categoria familiar.",
       },
       {
         title: "Aluguel de espaços para eventos",
-        text: "Desconto de até 30% na contratação de espaços e serviços da Firjan, SESI e SENAI.",
+        text: "Condições especiais na contratação de espaços e serviços da Firjan, SESI e SENAI.",
       },
     ],
   },
 ];
 
 export const DISCOUNTS: Discount[] = [
-  { label: "PCMSO — manutenção do programa", value: "25% de desconto" },
-  { label: "PCMSO — exames laboratoriais", value: "40% de desconto" },
-  { label: "PCMSO — exames radiológicos", value: "30% de desconto" },
-  { label: "Educação Básica (SESI) — Fundamental", value: "15% de desconto" },
-  { label: "Educação Profissional (SENAI) — turmas patrocinadas", value: "até 25% de desconto" },
-  { label: "Assessoria Tecnológica", value: "20% de desconto" },
-  { label: "Pesquisa Salarial", value: "40% de desconto" },
-  { label: "Aluguel de espaços para eventos", value: "até 30% de desconto" },
+  { label: "PCMSO — manutenção do programa" },
+  { label: "PCMSO — exames laboratoriais e radiológicos" },
+  { label: "Educação Básica (SESI)" },
+  { label: "Educação Profissional (SENAI) — turmas patrocinadas" },
+  { label: "Assessoria Tecnológica" },
+  { label: "Pesquisa Salarial" },
+  { label: "Aluguel de espaços para eventos" },
 ];

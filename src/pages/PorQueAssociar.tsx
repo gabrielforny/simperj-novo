@@ -4,12 +4,13 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Accordion } from "@/components/ui/Accordion";
 import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
 import { ButtonLink } from "@/components/ui/Button";
 import { BENEFIT_GROUPS, DISCOUNTS } from "@/data/benefits";
 import { COUNCIL_REPRESENTATIVES } from "@/data/board";
+
+const COUNCILS = Array.from(new Set(COUNCIL_REPRESENTATIVES.map((c) => c.council)));
 
 export default function PorQueAssociar() {
   return (
@@ -27,28 +28,26 @@ export default function PorQueAssociar() {
       />
 
       <Section spacing="lg">
-        <Container className="max-w-3xl">
+        <Container>
           <SectionHeader eyebrow="Benefícios" title="Organizados por área de interesse" />
-          <div className="mt-10">
-            <Accordion
-              defaultOpenId={BENEFIT_GROUPS[0]?.id}
-              items={BENEFIT_GROUPS.map((group) => ({
-                id: group.id,
-                title: group.title,
-                content: (
-                  <ul className="space-y-4">
-                    {group.items.map((item) => (
-                      <li key={item.title} className="flex gap-3">
-                        <CheckCircle2 size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[var(--brand-secondary)]" />
-                        <span>
-                          <strong className="text-[var(--text)]">{item.title}.</strong> {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                ),
-              }))}
-            />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {BENEFIT_GROUPS.map((group, i) => (
+              <Reveal key={group.id} delay={i * 60} className="border border-[var(--border)] rounded-[var(--radius-md)] p-6">
+                <h3 className="font-[var(--font-display)] font-semibold text-[var(--brand-primary)]" style={{ fontSize: "var(--text-h4)" }}>
+                  {group.title}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item.title} className="flex gap-3">
+                      <CheckCircle2 size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[var(--brand-secondary)]" />
+                      <span className="text-sm leading-normal">
+                        <strong className="text-[var(--text)]">{item.title}.</strong> <span className="text-[var(--text-muted)]">{item.text}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>
@@ -56,14 +55,14 @@ export default function PorQueAssociar() {
       <Section tone="surface" spacing="lg">
         <Container className="grid gap-14 lg:grid-cols-2">
           <Reveal>
-            <SectionHeader eyebrow="Convênio Firjan" title="Descontos em SESI, SENAI e serviços Firjan" lead="Condições diferenciadas negociadas coletivamente pelo sindicato." />
+            <SectionHeader eyebrow="Convênio Firjan" title="Condições especiais em SESI, SENAI e serviços Firjan" lead="Condições diferenciadas negociadas coletivamente pelo sindicato." />
           </Reveal>
           <Reveal delay={100}>
             <ul className="divide-y divide-[var(--border)] border-y border-[var(--border)]">
               {DISCOUNTS.map((d) => (
-                <li key={d.label} className="flex items-center justify-between gap-6 py-4">
-                  <span className="text-sm text-[var(--text-muted)]">{d.label}</span>
-                  <span className="font-[var(--font-display)] font-semibold text-[var(--brand-primary)] whitespace-nowrap">{d.value}</span>
+                <li key={d.label} className="flex items-center gap-3 py-4">
+                  <CheckCircle2 size={18} aria-hidden="true" className="shrink-0 text-[var(--brand-secondary)]" />
+                  <span className="text-sm text-[var(--text)]">{d.label}</span>
                 </li>
               ))}
             </ul>
@@ -72,16 +71,15 @@ export default function PorQueAssociar() {
       </Section>
 
       <Section spacing="lg">
-        <Container>
+        <Container className="max-w-3xl">
           <SectionHeader eyebrow="Representação" title="SIMPERJ nos Conselhos Empresariais da Firjan" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {COUNCIL_REPRESENTATIVES.map((c) => (
-              <div key={c.council} className="flex items-center justify-between gap-4 border border-[var(--border)] rounded-[var(--radius-md)] p-4">
-                <span className="text-sm text-[var(--text)]">{c.council}</span>
-                <span className="text-sm font-semibold text-[var(--brand-primary)] whitespace-nowrap">{c.representative}</span>
-              </div>
+          <ul className="mt-10 grid gap-3 sm:grid-cols-2">
+            {COUNCILS.map((council) => (
+              <li key={council} className="border border-[var(--border)] rounded-[var(--radius-md)] p-4 text-sm text-[var(--text)]">
+                {council}
+              </li>
             ))}
-          </div>
+          </ul>
         </Container>
       </Section>
 
