@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, lead, breadcrumb, image, imageAlt }: 
           </div>
         )}
         {eyebrow && <p className="eyebrow text-white/70">{eyebrow}</p>}
-        <h1 className="mt-3 font-[var(--font-display)] font-extrabold leading-[var(--leading-tight)] max-w-3xl" style={{ fontSize: "var(--text-h1)" }}>
+        <h1 className="mt-3 font-[var(--font-display)] font-extrabold leading-[var(--leading-tight)] max-w-4xl" style={{ fontSize: "var(--text-h1)" }}>
           {title}
         </h1>
         {lead && (

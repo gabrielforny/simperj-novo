@@ -14,8 +14,10 @@ import { SITE } from "@/data/site";
 import { NEWS_POSTS } from "@/data/news";
 import { DOCUMENTS } from "@/data/documents";
 import { PARTNERS } from "@/data/partners";
-import { RECENT_ACTIONS } from "@/data/events";
+import { RECENT_ACTIONS, EVENTS } from "@/data/events";
+import { formatDateShort } from "@/lib/format";
 import { MISSION_STATEMENT } from "@/data/history";
+import { BENEFIT_GROUPS } from "@/data/benefits";
 import { ContactSummaryForm } from "@/components/sections/ContactSummaryForm";
 
 const HERO_IMAGE = "/assets/institutional/tipos-de-plasticos.jpg";
@@ -50,6 +52,8 @@ function StatCounter({ stat }: { stat: (typeof STATS)[number] }) {
 export default function Home() {
   const latestNews = NEWS_POSTS.slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
+  const benefitPreview = BENEFIT_GROUPS.slice(0, 3);
+  const homeActions = [...RECENT_ACTIONS, ...EVENTS.slice(0, 2)].slice(0, 4);
 
   return (
     <>
@@ -76,7 +80,7 @@ export default function Home() {
             <p className="eyebrow text-white/70">Sindicato da Indústria de Material Plástico do RJ</p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-5 font-[var(--font-display)] font-extrabold leading-[1.05] max-w-3xl" style={{ fontSize: "var(--text-display)" }}>
+            <h1 className="mt-5 font-[var(--font-display)] font-extrabold leading-[1.1] max-w-4xl" style={{ fontSize: "var(--text-display)" }}>
               Fortalecendo a indústria do plástico no Rio de Janeiro
             </h1>
           </Reveal>
@@ -113,13 +117,16 @@ export default function Home() {
               77 anos de representação da indústria plástica fluminense
             </h2>
             <p className="mt-4 text-[var(--text-muted)] leading-normal">{MISSION_STATEMENT}</p>
-            <Link to="/quem-somos" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)] hover:underline">
+            <ButtonLink to="/quem-somos" variant="secondary" className="mt-6">
               Conheça nossa história <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+            </ButtonLink>
           </Reveal>
           <Reveal delay={100} className="grid gap-5 sm:grid-cols-2">
             {HIGHLIGHTS.map((item) => (
-              <div key={item.title} className="border border-[var(--border)] rounded-[var(--radius-md)] p-6 h-full">
+              <div
+                key={item.title}
+                className="border border-[var(--border)] rounded-[var(--radius-md)] p-6 h-full transition-all duration-150 hover:border-[var(--brand-primary)] hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5"
+              >
                 <item.icon size={26} strokeWidth={1.6} className="text-[var(--brand-primary)]" aria-hidden="true" />
                 <h3 className="mt-4 font-[var(--font-display)] font-semibold text-[var(--text)]" style={{ fontSize: "var(--text-h4)" }}>
                   {item.title}
@@ -132,12 +139,32 @@ export default function Home() {
       </Section>
 
       {/* BENEFÍCIOS resumo */}
-      <Section tone="surface" spacing="lg">
+      <Section tone="brand" spacing="lg">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeader eyebrow="Por que se associar" title="Força coletiva para o seu negócio crescer" lead="Representação técnica e política, benefícios exclusivos e proximidade com o ecossistema industrial fluminense." />
-            <Link to="/por-que-se-associar" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)] hover:underline">
-              Ver benefícios <ArrowRight size={16} aria-hidden="true" />
+            <SectionHeader dark eyebrow="Por que se associar" title="Força coletiva para o seu negócio crescer" lead="Representação técnica e política, benefícios exclusivos e proximidade com o ecossistema industrial fluminense." />
+            <Link to="/por-que-se-associar" className="hidden md:inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline">
+              Ver todos os benefícios <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {benefitPreview.map((group, i) => {
+              const first = group.items[0];
+              if (!first) return null;
+              return (
+                <Reveal key={group.id} delay={i * 90} className="rounded-[var(--radius-md)] border border-white/15 bg-white/5 p-6 h-full transition-colors duration-150 hover:bg-white/10 hover:border-white/30">
+                  <p className="eyebrow text-white/60">{group.title}</p>
+                  <h3 className="mt-3 font-[var(--font-display)] font-semibold text-white leading-snug" style={{ fontSize: "var(--text-h4)" }}>
+                    {first.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-[var(--text-on-brand-muted)] leading-normal">{first.text}</p>
+                </Reveal>
+              );
+            })}
+          </div>
+          <div className="mt-8 md:hidden">
+            <Link to="/por-que-se-associar" className="inline-flex items-center gap-2 text-sm font-semibold text-white hover:underline">
+              Ver todos os benefícios <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>
         </Container>
@@ -148,20 +175,34 @@ export default function Home() {
         <Container>
           <SectionHeader eyebrow="Ações e eventos" title="O sindicato em movimento" lead="Participações e representações recentes do SIMPERJ junto ao setor." />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {RECENT_ACTIONS.map((action, i) => (
-              <Reveal key={action.slug} delay={i * 100} className="group relative overflow-hidden border border-[var(--border)] rounded-[var(--radius-md)] h-72">
-                {action.images?.[0] && (
-                  <img src={action.images[0]} alt={action.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                )}
-                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,25,38,0.05) 30%, rgba(11,25,38,0.9) 100%)" }} aria-hidden="true" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <h3 className="font-[var(--font-display)] font-semibold text-white leading-snug" style={{ fontSize: "var(--text-h4)" }}>
-                    {action.name}
-                  </h3>
-                  {action.description && <p className="mt-2 text-sm text-white/80 leading-normal max-w-md">{action.description}</p>}
-                </div>
-              </Reveal>
-            ))}
+            {homeActions.map((action, i) => {
+              const image = action.images?.[0];
+              return (
+                <Reveal key={action.slug} delay={i * 100} className="group relative overflow-hidden border border-[var(--border)] rounded-[var(--radius-md)] h-72">
+                  {image ? (
+                    <>
+                      <img src={image} alt={action.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(11,25,38,0.05) 30%, rgba(11,25,38,0.9) 100%)" }} aria-hidden="true" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-[var(--brand-primary-dark)]" aria-hidden="true" />
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 p-6">
+                    {!image && (action.startDate || action.location) && (
+                      <p className="eyebrow text-white/60 mb-2">
+                        {action.startDate ? formatDateShort(action.startDate) : ""}
+                        {action.startDate && action.location ? " · " : ""}
+                        {action.location ?? ""}
+                      </p>
+                    )}
+                    <h3 className="font-[var(--font-display)] font-semibold text-white leading-snug" style={{ fontSize: "var(--text-h4)" }}>
+                      {action.name}
+                    </h3>
+                    {action.description && <p className="mt-2 text-sm text-white/80 leading-normal max-w-md">{action.description}</p>}
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
           <div className="mt-8 text-center">
             <Link to="/eventos" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)] hover:underline">
