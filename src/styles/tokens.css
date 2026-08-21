@@ -1,0 +1,103 @@
+:root {
+  /* Marca — azul institucional (da logo oficial) */
+  --brand-primary: #0b3d63;
+  --brand-primary-dark: #072844;
+  --brand-primary-light: #e8f0f7;
+
+  /* Secundária — sustentabilidade / economia circular */
+  --brand-secondary: #1c6b4f;
+  --brand-secondary-dark: #124a36;
+  --brand-secondary-light: #e6f2ec;
+
+  /* Accent — uso pontual */
+  --accent: #c8622a;
+  --accent-dark: #a44e20;
+  --accent-light: #f7e7dc;
+
+  /* Neutros técnicos */
+  --background: #ffffff;
+  --surface: #f6f8fa;
+  --surface-raised: #ffffff;
+  --border: #dde3e9;
+  --border-strong: #b9c4cd;
+
+  --text: #101820;
+  --text-muted: #4c5a66;
+  --text-on-brand: #ffffff;
+  --text-on-brand-muted: #c9d8e5;
+
+  --success: #1c6b4f;
+  --success-light: #e6f2ec;
+  --warning: #c8622a;
+  --warning-light: #f7e7dc;
+  --danger: #b3261e;
+  --danger-light: #fbe9e7;
+  --focus-ring: #1a73b8;
+
+  /* Tipografia */
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --text-display: clamp(2.5rem, 2rem + 2.2vw, 4rem);
+  --text-h1: clamp(2rem, 1.7rem + 1.4vw, 3rem);
+  --text-h2: clamp(1.5rem, 1.3rem + 0.9vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 1.15rem + 0.5vw, 1.625rem);
+  --text-h4: 1.25rem;
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* Espaçamento */
+  --space-1: 0.25rem;  --space-2: 0.5rem;   --space-3: 0.75rem;
+  --space-4: 1rem;     --space-5: 1.25rem;  --space-6: 1.5rem;
+  --space-8: 2rem;     --space-10: 2.5rem;  --space-12: 3rem;
+  --space-16: 4rem;    --space-20: 5rem;    --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Raio */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-full: 999px;
+
+  /* Sombra */
+  --shadow-sm: 0 1px 2px rgba(11, 25, 38, 0.06);
+  --shadow-md: 0 4px 12px rgba(11, 25, 38, 0.08);
+  --shadow-lg: 0 12px 32px rgba(11, 25, 38, 0.12);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* Containers */
+  --container-content: 72rem;
+  --container-wide: 84rem;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 400ms;
+
+  /* Z-index */
+  --z-base: 0;
+  --z-sticky-header: 40;
+  --z-dropdown: 50;
+  --z-drawer: 60;
+  --z-modal-backdrop: 70;
+  --z-modal: 80;
+  --z-toast: 90;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

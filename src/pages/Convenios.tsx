@@ -1,0 +1,52 @@
+import { Handshake } from "lucide-react";
+import { Seo } from "@/components/layout/Seo";
+import { PageHero } from "@/components/sections/PageHero";
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { SITE } from "@/data/site";
+import { CONVENIOS, CONVENIOS_INTRO } from "@/data/convenios";
+
+export default function Convenios() {
+  return (
+    <>
+      <Seo
+        title="Convênios"
+        description="Convênios e parcerias do SIMPERJ com desconto para empresas associadas."
+        path="/convenios"
+      />
+      <PageHero eyebrow="Benefícios" title="Convênios SIMPERJ" lead={CONVENIOS_INTRO} breadcrumb={[{ label: "Convênios" }]} />
+
+      <Section spacing="lg">
+        <Container>
+          {CONVENIOS.length === 0 ? (
+            <div className="border border-dashed border-[var(--border-strong)] rounded-[var(--radius-md)] p-12 text-center max-w-xl mx-auto">
+              <Handshake size={32} strokeWidth={1.5} className="mx-auto text-[var(--text-muted)]" aria-hidden="true" />
+              <h2 className="mt-4 font-[var(--font-display)] font-semibold text-[var(--text)]" style={{ fontSize: "var(--text-h4)" }}>
+                Lista de convênios em atualização
+              </h2>
+              <p className="mt-2 text-sm text-[var(--text-muted)] leading-normal">
+                Estamos organizando a lista completa de convênios e parceiros com desconto para associados. Enquanto isso, tire suas dúvidas diretamente com nossa equipe.
+              </p>
+              <a
+                href={`mailto:${SITE.associationEmail}?subject=Dúvida sobre convênios SIMPERJ`}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-primary)] hover:underline"
+              >
+                Falar sobre convênios
+              </a>
+            </div>
+          ) : (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {CONVENIOS.map((c) => (
+                <div key={c.company} className="border border-[var(--border)] rounded-[var(--radius-md)] p-5">
+                  <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
+                  <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
+                  <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </Container>
+      </Section>
+    </>
+  );
+}
