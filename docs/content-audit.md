@@ -161,10 +161,8 @@ Todas **KEEP**, mas a nova arquitetura não recria páginas de anexo individuais
 
 ---
 
-## 11. Decisões que exigem validação humana antes da Fase de implementação de conteúdo
+## 11. Decisões validadas com o cliente
 
-- [ ] **Suplentes da diretoria** (achado #4 acima): preciso que o cliente confirme os 5-6 nomes/empresas corretos antes de publicarmos essa lista — não vou adivinhar.
-- [ ] **Lista de convênios** (achado #6): confirmar se existe conteúdo a migrar ou se a página `/convenios` deve estrear vazia (com arquitetura pronta) até o cliente fornecer os parceiros de convênio.
-- [x] **Blog legado 2017-2020 com imagens de terceiros**: cliente já decidiu — migrar como está (registrado em §6/§7).
-
-Essas duas pendências **não bloqueiam** a construção do site — a estrutura e os componentes ficam prontos; os dados entram assim que confirmados.
+- [x] **Blog legado 2017-2020 com imagens de terceiros**: migrar como está (registrado em §6/§7).
+- [x] **Lista de convênios** (achado #6): confirmado pelo cliente — a página `/convenio/` está vazia mesmo no site atual, não há lista publicada em lugar nenhum. `/convenios` estreia com a arquitetura de dados pronta (`Convenio` type + `convenios.ts` vazio) e um estado vazio institucional ("em breve"), sem convênios fictícios. Conteúdo entra quando o cliente fornecer.
+- [x] **Suplentes da diretoria** (achado #4): cliente confirmou que não há dados corretos disponíveis agora. Decisão: publicar a estrutura com placeholders explícitos (`"Suplente 1"`, `"Suplente 2"`, etc., sem nome de empresa) em vez de usar os dados corrompidos do WordPress — evita publicar informação errada sobre uma pessoa real. Os 3 nomes que **são** internamente consistentes no dado de origem (Alexandre Alberto Nascimento Silva, Franklin Pires de Oliveira, Reynaldo Thurler) entram normalmente; as posições com dado claramente corrompido (repetição de "Fernanda Coelho Brites Pinto" com empresas trocadas) viram placeholder `"Suplente a confirmar"` até o cliente enviar o dado correto.
