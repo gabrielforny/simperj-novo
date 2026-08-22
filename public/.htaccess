@@ -1,0 +1,22 @@
+# SPA fallback: qualquer rota que não seja um arquivo/pasta real
+# (ex: /quem-somos, /noticias/algum-slug) deve servir o index.html,
+# para o React Router assumir o roteamento no navegador.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Cache forte para assets com hash no nome (JS/CSS gerados pelo build);
+# HTML nunca é cacheado para sempre servir a versão mais recente.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
