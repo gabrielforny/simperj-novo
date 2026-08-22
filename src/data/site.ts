@@ -2,7 +2,7 @@ export const SITE = {
   name: "SIMPERJ",
   fullName: "Sindicato da Indústria de Material Plástico do Estado do Rio de Janeiro",
   founded: 1947,
-  url: "https://www.simperj.com.br",
+  url: "https://www.simperj.org.br",
   logoColor: "/assets/brand/simperj-logo-color.png",
   logoWhite: "/assets/brand/simperj-logo-white.png",
   contacts: {
