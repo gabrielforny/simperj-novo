@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.simperj.org.br/sitemap.xml
+Sitemap: https://www.simperj.com.br/sitemap.xml
