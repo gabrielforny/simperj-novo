@@ -5,7 +5,6 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
-import { PersonCard } from "@/components/cards/PersonCard";
 import { PartnerLogo } from "@/components/cards/PartnerLogo";
 import { Button } from "@/components/ui/Button";
 import { TIMELINE, MISSION_STATEMENT, COMMITMENT_STATEMENT } from "@/data/history";
@@ -65,8 +64,10 @@ export default function QuemSomos() {
           <SectionHeader dark eyebrow="Gestão 2025–2028" title="Diretoria atual" />
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {BOARD.map((member, i) => (
-              <Reveal key={member.slug} delay={i * 70}>
-                <PersonCard person={member} dark hidePhoto />
+              <Reveal key={member.slug} delay={i * 70} className="border border-white/15 rounded-[var(--radius-md)] p-5">
+                <p className="eyebrow text-white/60">{member.role}</p>
+                <p className="mt-2 font-[var(--font-display)] font-semibold text-white leading-snug">{member.name}</p>
+                {member.company && <p className="mt-1 text-xs text-white/55">{member.company}</p>}
               </Reveal>
             ))}
           </div>
