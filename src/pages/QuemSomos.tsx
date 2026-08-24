@@ -74,14 +74,13 @@ export default function QuemSomos() {
 
           <Reveal delay={100} className="mt-14">
             <p className="eyebrow text-white/70">Conselho Fiscal</p>
-            <div className="mt-5 grid gap-5 sm:grid-cols-3 max-w-3xl">
-              {FISCAL_COUNCIL.map((member) => (
-                <div key={member.slug}>
-                  <span className="text-sm text-white/85 leading-snug">
-                    {member.name}
-                    <span className="block text-xs text-white/55">{member.company}</span>
-                  </span>
-                </div>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {FISCAL_COUNCIL.map((member, i) => (
+                <Reveal key={member.slug} delay={i * 70} className="border border-white/15 rounded-[var(--radius-md)] p-5">
+                  <p className="eyebrow text-white/60">{member.role}</p>
+                  <p className="mt-2 font-[var(--font-display)] font-semibold text-white leading-snug">{member.name}</p>
+                  {member.company && <p className="mt-1 text-xs text-white/55">{member.company}</p>}
+                </Reveal>
               ))}
             </div>
           </Reveal>
