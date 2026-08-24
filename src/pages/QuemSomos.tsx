@@ -9,7 +9,7 @@ import { PersonCard } from "@/components/cards/PersonCard";
 import { PartnerLogo } from "@/components/cards/PartnerLogo";
 import { Button } from "@/components/ui/Button";
 import { TIMELINE, MISSION_STATEMENT, COMMITMENT_STATEMENT } from "@/data/history";
-import { BOARD, FISCAL_COUNCIL, FISCAL_COUNCIL_ALTERNATES, PAST_PRESIDENTS, COMMITTEES } from "@/data/board";
+import { BOARD, FISCAL_COUNCIL, PAST_PRESIDENTS, COMMITTEES } from "@/data/board";
 import { PARTNERS } from "@/data/partners";
 import { SITE } from "@/data/site";
 
@@ -83,23 +83,6 @@ export default function QuemSomos() {
                 </div>
               ))}
             </div>
-          </Reveal>
-
-          <Reveal delay={150} className="mt-10">
-            <p className="eyebrow text-white/70">Conselho Fiscal — Suplentes</p>
-            <div className="mt-5 grid gap-5 sm:grid-cols-3 max-w-3xl">
-              {FISCAL_COUNCIL_ALTERNATES.map((member) => (
-                <div key={member.slug}>
-                  <span className={`text-sm leading-snug ${member.placeholder ? "text-white/50 italic" : "text-white/85"}`}>
-                    {member.name}
-                    {member.company && <span className="block text-xs text-white/55 not-italic">{member.company}</span>}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-xs text-white/45 max-w-md">
-              Dados de suplência ainda em confirmação junto ao sindicato — posições marcadas serão atualizadas assim que o cadastro oficial for validado.
-            </p>
           </Reveal>
         </Container>
       </Section>

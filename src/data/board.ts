@@ -1,34 +1,30 @@
 import type { BoardMember, PastPresident, CouncilRepresentative } from "@/types";
 
-// Fonte: /quem-somos/ do site atual (auditoria em docs/content-audit.md §1).
+// Fonte: planilha "Chapa atualizada.xlsx" enviada pela cliente em 2026-08-24.
+// Cliente pediu para tirar as fotos da diretoria — nenhum membro tem `photo` aqui.
 export const BOARD: BoardMember[] = [
-  { slug: "ronaldo-castilho-thomaz", name: "Ronaldo Castilho Thomaz", role: "Presidente", company: "Bywer Indústria de Plásticos Ltda", photo: "/assets/board/ronaldo-castilho-thomaz.jpg" },
-  { slug: "claudio-patrick-vollers", name: "Claudio Patrick Vollers", role: "1º Vice-Presidente", company: "Bauen Indústrias Plásticas Eireli", photo: "/assets/board/claudio-patrick-vollers.jpg" },
+  { slug: "ronaldo-castilho-thomaz", name: "Ronaldo Castilho Thomaz", role: "Presidente", company: "Bywer de Plásticos Ltda" },
+  { slug: "claudio-patrick-vollers", name: "Claudio Patrick Vollers", role: "1º Vice-Presidente", company: "Bauen Indústrias Plásticas Eireli" },
   { slug: "andre-lima-de-castro", name: "André Lima de Castro", role: "2º Vice-Presidente", company: "ElC Produtos de Segurança Indústria e Comércio Ltda" },
-  { slug: "franklin-soares-vieira", name: "Franklin Soares Vieira", role: "1º Tesoureiro", company: "Artmed Artigos de Medição Ind. e Com. Ltda", photo: "/assets/board/franklin-soares-vieira.jpg" },
-  { slug: "francisco-piragine-junior", name: "Francisco Piragine Junior", role: "2º Tesoureiro", company: "UF Brindes Indústria e Comércio Ltda Epp", photo: "/assets/board/francisco-piragine-junior.jpg" },
-  { slug: "fernanda-coelho-brites-pinto", name: "Fernanda Coelho Brites Pinto", role: "1ª Secretária", company: "FL Ind. e Com. de Produtos Descartáveis Ltda", photo: "/assets/board/fernanda-coelho-brites-pinto.jpg" },
-  { slug: "marcio-racca-virginio-de-souza", name: "Marcio Racca Virginio de Souza", role: "2º Secretário", company: "Galpão 3 Desenvolvimento de Produtos Ltda Me", photo: "/assets/board/marcio-racca-virginio-de-souza.jpg" },
+  { slug: "franklin-soares-vieira", name: "Franklin Soares Vieira", role: "1º Tesoureiro", company: "Artmed Artigos de Medição Indústria e Comércio Ltda" },
+  { slug: "francisco-piragine-junior", name: "Francisco Piragine Junior", role: "2º Tesoureiro", company: "UF Brindes Indústria e Comércio Ltda" },
+  { slug: "marcio-racca-virginio-de-souza", name: "Marcio Racca Virginio de Souza", role: "1º Secretário", company: "Galpão 3 Desenvolvimento de Produtos Ltda ME" },
+  { slug: "rafael-borges-sette", name: "Rafael Borges Sette", role: "2º Secretário", company: "Nova Lamitech Laminados Plásticos Ltda" },
 ];
 
+// Fonte: planilha "Chapa atualizada.xlsx" enviada pela cliente em 2026-08-24.
+// A planilha não diferencia cargos dentro do Conselho Fiscal Efetivo.
 export const FISCAL_COUNCIL: BoardMember[] = [
-  { slug: "antonio-guarino-de-souza", name: "Antonio Guarino de Souza", role: "Conselho Fiscal Efetivo", company: "Indústrias Plásticas Zarzur Ltda", photo: "/assets/board/antonio-guarino-de-souza.jpg" },
-  { slug: "rafael-borges-sette", name: "Rafael Borges Sette", role: "Conselho Fiscal Efetivo", company: "Nova Lamitech Laminados Plásticos Eireli", photo: "/assets/board/rafael-borges-sette.jpg" },
-  { slug: "fernanda-coelho-brites-pinto-fiscal", name: "Fernanda Coelho Brites Pinto", role: "Conselho Fiscal Efetivo", company: "FL Ind. e Com. de Produtos Descartáveis Ltda", photo: "/assets/board/fernanda-coelho-brites-pinto.jpg" },
+  { slug: "antonio-guarino-de-souza", name: "Antonio Guarino de Souza", role: "Conselho Fiscal Efetivo", company: "Indústrias Plásticas Zarzur Ltda" },
+  { slug: "jose-simoes-de-lima", name: "José Simões de Lima", role: "Conselho Fiscal Efetivo", company: "Jsimões Plásticos Indústria e Comércio Ltda" },
+  { slug: "alexandre-alberto-nascimento-silva", name: "Alexandre Alberto Nascimento Silva", role: "Conselho Fiscal Efetivo", company: "Xtransformações Fábrica de Embalagens e Artigos Plásticos Ltda" },
 ];
 
-// Nota (docs/content-audit.md §10.4): a lista de suplentes no WordPress atual tem dados
-// corrompidos (mesmo nome repetido com empresas diferentes, erro de template do Elementor).
-// Cliente confirmou que não há dado correto disponível agora — os 3 nomes internamente
-// consistentes entram normalmente; as posições corrompidas viram placeholder explícito
-// para substituição posterior, em vez de publicar informação errada sobre pessoas reais.
-export const FISCAL_COUNCIL_ALTERNATES: BoardMember[] = [
-  { slug: "alexandre-alberto-nascimento-silva", name: "Alexandre Alberto Nascimento Silva", role: "Suplente", company: "Xtransformações Fabricação de Embalagens e Artefatos Plásticos Ltda-Me", photo: "/assets/board/alexandre-alberto-nascimento-silva.jpg" },
-  { slug: "franklin-pires-de-oliveira", name: "Franklin Pires de Oliveira", role: "Suplente", company: "Frilca Ind. e Com. de Sacos Plásticos Ltda", photo: "/assets/board/franklin-pires-de-oliveira.jpg" },
-  { slug: "reynaldo-thurler", name: "Reynaldo Thurler", role: "Diretor Suplente", company: "Indústria Thurleflex Ltda", photo: "/assets/board/reynaldo-thurler.jpg" },
-  { slug: "suplente-a-confirmar-1", name: "Suplente a confirmar", role: "Suplente", placeholder: true },
-  { slug: "suplente-a-confirmar-2", name: "Suplente a confirmar", role: "Suplente", placeholder: true },
-];
+// A planilha enviada em 2026-08-24 não trouxe suplentes do Conselho Fiscal.
+// Removido até o cliente confirmar a lista atual (a versão anterior está
+// desatualizada: Alexandre Alberto Nascimento Silva, que constava como
+// suplente, agora é efetivo).
+export const FISCAL_COUNCIL_ALTERNATES: BoardMember[] = [];
 
 // Fonte: /quem-somos/ — "Gestões Anteriores".
 export const PAST_PRESIDENTS: PastPresident[] = [
