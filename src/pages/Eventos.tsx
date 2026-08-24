@@ -5,10 +5,11 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { EventCard } from "@/components/cards/EventCard";
-import { EVENTS, RECENT_ACTIONS, INTERNATIONAL_EVENTS_NOTICE } from "@/data/events";
+import { EVENTS, RECENT_ACTIONS } from "@/data/events";
 
 export default function Eventos() {
   const nationalFairs = EVENTS.filter((e) => e.category === "feira-nacional");
+  const internationalFairs = EVENTS.filter((e) => e.category === "feira-internacional");
 
   return (
     <>
@@ -51,8 +52,12 @@ export default function Eventos() {
                 Feiras Internacionais
               </h2>
             </Reveal>
-            <div className="mt-6 border border-dashed border-[var(--border-strong)] rounded-[var(--radius-md)] p-8 text-center text-sm text-[var(--text-muted)]">
-              {INTERNATIONAL_EVENTS_NOTICE}
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {internationalFairs.map((ev, i) => (
+                <Reveal key={ev.slug} delay={i * 90}>
+                  <EventCard event={ev} />
+                </Reveal>
+              ))}
             </div>
           </div>
 

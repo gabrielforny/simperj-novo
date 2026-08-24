@@ -13,6 +13,7 @@ const COLUMNS: TableColumn<CollectiveAgreement>[] = [
   { key: "baseDate", header: "Data-base", render: (r) => r.baseDate },
   { key: "lastCct", header: "Última CCT fechada", render: (r) => r.lastCct },
   { key: "laborUnion", header: "Sindicato Laboral", render: (r) => r.laborUnion },
+  { key: "unionPresident", header: "Presidente", render: (r) => r.unionPresident },
   { key: "cnpj", header: "CNPJ", render: (r) => <span className="font-[var(--font-mono)]">{r.cnpj}</span> },
   { key: "address", header: "Endereço", render: (r) => r.address },
   { key: "phone", header: "Telefone", render: (r) => r.phone },

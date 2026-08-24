@@ -112,6 +112,7 @@ export interface CollectiveAgreement {
   baseDate: string;
   lastCct: string;
   laborUnion: string;
+  unionPresident: string;
   cnpj: string;
   address: string;
   phone: string;
