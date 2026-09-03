@@ -97,7 +97,8 @@ export type DocumentCategory =
   | "Economia Circular"
   | "Análises Específicas"
   | "Guias Práticos"
-  | "Institucional";
+  | "Institucional"
+  | "Convênios e Benefícios";
 
 export interface DocumentItem {
   slug: string;

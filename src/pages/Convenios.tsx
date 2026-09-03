@@ -1,10 +1,15 @@
-import { Handshake } from "lucide-react";
+import { ExternalLink, FileText, Handshake } from "lucide-react";
 import { Seo } from "@/components/layout/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { SITE } from "@/data/site";
 import { CONVENIOS, CONVENIOS_INTRO } from "@/data/convenios";
+import { DOCUMENTS } from "@/data/documents";
+
+const CONVENIO_MATERIALS: Record<string, string[]> = {
+  "Universidade Veiga de Almeida (UVA)": ["uva-pos-online-mes-do-cliente-folder", "uva-pos-online-passo-a-passo-cupom"],
+};
 
 export default function Convenios() {
   return (
@@ -36,14 +41,46 @@ export default function Convenios() {
             </div>
           ) : (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {CONVENIOS.map((c) => (
-                <div key={c.company} className="border border-[var(--border)] rounded-[var(--radius-md)] p-5">
-                  <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
-                  <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
-                  <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
-                  <p className="mt-3 text-sm font-semibold text-[var(--brand-secondary)]">{c.benefit}</p>
-                </div>
-              ))}
+              {CONVENIOS.map((c) => {
+                const materials = (CONVENIO_MATERIALS[c.company] ?? [])
+                  .map((slug) => DOCUMENTS.find((d) => d.slug === slug))
+                  .filter((d): d is NonNullable<typeof d> => Boolean(d));
+
+                return (
+                  <div key={c.company} className="border border-[var(--border)] rounded-[var(--radius-md)] p-5">
+                    <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
+                    <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
+                    <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
+                    <p className="mt-3 text-sm font-semibold text-[var(--brand-secondary)]">{c.benefit}</p>
+                    {c.link && (
+                      <a
+                        href={c.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-primary)] hover:underline"
+                      >
+                        Acessar inscrições <ExternalLink size={14} aria-hidden="true" />
+                      </a>
+                    )}
+                    {materials.length > 0 && (
+                      <ul className="mt-3 space-y-1.5 border-t border-[var(--border)] pt-3">
+                        {materials.map((doc) => (
+                          <li key={doc.slug}>
+                            <a
+                              href={doc.file}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--brand-primary)] hover:underline"
+                            >
+                              <FileText size={14} aria-hidden="true" className="shrink-0" /> {doc.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
         </Container>

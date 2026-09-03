@@ -22,6 +22,8 @@ export const DOCUMENTS: DocumentItem[] = [
   { slug: "licoes-aprendidas-pontos-coleta", title: "Lições Aprendidas na Análise Estatística dos Pontos de Coleta", description: "Braskem — aprendizados práticos do estudo de pontos de coleta.", category: "Guias Práticos", year: 2025, file: "/assets/documents/licoes-aprendidas-pontos-coleta-braskem.pdf" },
   { slug: "apresentacao-gladstone-alerj", title: "Apresentação Gladstone — ALERJ (28/set/2023)", description: "Apresentação institucional do SIMPERJ na Assembleia Legislativa do Rio de Janeiro.", category: "Institucional", year: 2023, file: "/assets/documents/apresentacao-gladstone-alerj-set2023.pdf" },
   { slug: "ficha-cadastral-associados", title: "Ficha Registro de Associados", description: "Ficha de cadastro para associação ao SIMPERJ — utilizada em /associe-se.", category: "Institucional", year: 2024, file: "/assets/documents/ficha-cadastral-simperj.pdf" },
+  { slug: "uva-pos-online-mes-do-cliente-folder", title: "UVA Pós On-line — Campanha Mês do Cliente", description: "Folder com o catálogo de cursos de pós-graduação e MBA da Universidade Veiga de Almeida, convênio SIMPERJ. Campanha válida de 01 a 30/09/2026.", category: "Convênios e Benefícios", year: 2026, file: "/assets/documents/uva-pos-online-mes-do-cliente-folder.pdf" },
+  { slug: "uva-pos-online-passo-a-passo-cupom", title: "UVA Pós On-line — Passo a Passo do Cupom de Desconto", description: "Como se inscrever na pós-graduação on-line da UVA com o cupom de desconto do convênio SIMPERJ.", category: "Convênios e Benefícios", year: 2026, file: "/assets/documents/uva-pos-online-passo-a-passo-cupom.pdf" },
 ];
 
 export const DOCUMENT_CATEGORIES = Array.from(new Set(DOCUMENTS.map((d) => d.category)));
