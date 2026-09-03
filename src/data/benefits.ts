@@ -1,10 +1,7 @@
 import type { BenefitGroup, Discount } from "@/types";
 
-// Fonte: /por-que-se-associar/ (texto corrido original) reagrupado por tema,
-// conforme pedido do briefing (docs/content-audit.md §1).
-// Nota: cliente pediu para retirar os percentuais de desconto anteriormente
-// exibidos aqui (material desatualizado); descrições ficam qualitativas até
-// que o SIMPERJ envie a tabela de condições atualizada.
+// Fonte: "Por que se associar.docx" enviado pela cliente em 2026-08-26, substituindo
+// o texto corrido anterior (que tinha informações desatualizadas, segundo a cliente).
 export const BENEFIT_GROUPS: BenefitGroup[] = [
   {
     id: "representatividade",
@@ -12,11 +9,41 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     items: [
       {
         title: "Representação institucional",
-        text: "O SIMPERJ é entidade filiada à FIRJAN e à ABIPLAST, com as quais mantém estreitos laços de cooperação na defesa dos interesses das associadas — e está presente na maioria dos Conselhos Empresariais da Firjan.",
+        text: "O SIMPERJ é entidade filiada à FIRJAN e à ABIPLAST, com as quais mantém os mais estreitos laços de mútua cooperação e apoio — o que tem sido de grande valia na defesa dos interesses das associadas, presentes na maioria dos Conselhos Empresariais da Firjan.",
       },
       {
         title: "Núcleo Intersindical de Conciliação",
-        text: "Em parceria com a Firjan, concilia conflitos individuais do trabalho e contribui para o aprimoramento das relações de trabalho, estimulando a negociação coletiva.",
+        text: "Em parceria com a Firjan, tem por objetivo exclusivo conciliar conflitos individuais do trabalho e contribuir para o aprimoramento e fortalecimento das relações de trabalho, estimulando a negociação coletiva.",
+      },
+    ],
+  },
+  {
+    id: "educacao",
+    title: "Educação e Capacitação",
+    items: [
+      {
+        title: "Cursos de aperfeiçoamento profissional gratuito",
+        text: "Convênio SESI / SENAC, disponível para as empresas associadas.",
+      },
+      {
+        title: "Cursos SEBRAE",
+        text: "Acesso à programação de capacitação e consultoria do SEBRAE.",
+      },
+      {
+        title: "Convênio UVA — Universidade Veiga de Almeida",
+        text: "Graduação e pós-graduação com desconto de até 80% para colaboradores das empresas associadas.",
+      },
+      {
+        title: "Convênios com instituições de ensino",
+        text: "Ensino fundamental, médio, graduação, pós-graduação e cursos técnicos.",
+      },
+      {
+        title: "Educação Básica (SESI)",
+        text: "Ensino fundamental e médio, com todo o material didático oferecido pelo SESI.",
+      },
+      {
+        title: "Educação Profissional (SENAI)",
+        text: "Descontos para turmas fechadas patrocinadas pela empresa (ou grupo de empresas) e para alunos em turmas realizadas nas Unidades Operacionais do SENAI, também patrocinadas pela empresa.",
       },
     ],
   },
@@ -26,7 +53,7 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     items: [
       {
         title: "Participação em feiras do setor",
-        text: "Oportunidade de expor em feiras nacionais, em estande do sindicato, com condições facilitadas de pagamento.",
+        text: "Oportunidade de expor em feiras nacionais, em estande do sindicato, com baixo custo e pagamento parcelado.",
       },
       {
         title: "Divulgação gratuita",
@@ -47,22 +74,8 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
         text: "Auditório à disposição das empresas associadas para reuniões, encontros e palestras.",
       },
       {
-        title: "Demais convênios",
-        text: "Óticas, hotéis e pousadas, além dos que se encontram em negociação com o sindicato.",
-      },
-    ],
-  },
-  {
-    id: "educacao",
-    title: "Educação e Capacitação",
-    items: [
-      {
-        title: "Convênios com instituições de ensino",
-        text: "Ensino fundamental, médio, graduação, pós-graduação, cursos técnicos, cursos de línguas e creches.",
-      },
-      {
-        title: "Educação profissional (SENAI)",
-        text: "Condições especiais para turmas fechadas patrocinadas pela empresa e para alunos em turmas nas Unidades Operacionais do SENAI.",
+        title: "Espaços para eventos",
+        text: "Contratação de espaços e serviços da Firjan, SESI e SENAI para eventos.",
       },
     ],
   },
@@ -71,12 +84,16 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     title: "Saúde e Segurança",
     items: [
       {
-        title: "Programas de Saúde Ocupacional (SESI)",
-        text: "Condições especiais no PCMSO, incluindo manutenção do programa, documento base e exames laboratoriais e radiológicos.",
+        title: "Programas de Saúde Ocupacional (SESI) — PCMSO",
+        text: "Gratuito para empresas com até 99 funcionários, com descontos para exames complementares.",
       },
       {
         title: "PPRA (SESI)",
-        text: "Isenção de documento base e condições especiais em avaliações de risco pontuais (ruído, iluminância, temperatura, gases e vapores).",
+        text: "Isenção de documento base (atualmente cobrado por porte e número de empregados) e condições especiais em avaliações de risco — ruído (pontual), iluminância, temperatura, gases e vapores orgânicos — e outras avaliações de risco.",
+      },
+      {
+        title: "PGR (SESI)",
+        text: "Gratuito para empresas com até 99 funcionários, com descontos para exames complementares.",
       },
       {
         title: "Odontologia (SESI)",
@@ -107,31 +124,25 @@ export const BENEFIT_GROUPS: BenefitGroup[] = [
     title: "Benefícios Firjan",
     items: [
       {
-        title: "Educação Básica (SESI)",
-        text: "Condições especiais no ensino fundamental e médio, com todo material didático oferecido pelo SESI.",
-      },
-      {
         title: "Certificados de Origem (FIRJAN)",
         text: "Condições especiais na emissão de certificados de origem.",
       },
       {
         title: "Esporte e Lazer — SESI Clube",
-        text: "Convênio com condições especiais em folha de pagamento, inclusive para a categoria familiar.",
-      },
-      {
-        title: "Aluguel de espaços para eventos",
-        text: "Condições especiais na contratação de espaços e serviços da Firjan, SESI e SENAI.",
+        text: "Convênio com desconto em folha de pagamento para pessoa jurídica.",
       },
     ],
   },
 ];
 
 export const DISCOUNTS: Discount[] = [
-  { label: "PCMSO — manutenção do programa" },
-  { label: "PCMSO — exames laboratoriais e radiológicos" },
-  { label: "Educação Básica (SESI)" },
+  { label: "PCMSO — gratuito para empresas com até 99 funcionários" },
+  { label: "PPRA — isenção de documento base e avaliações de risco" },
+  { label: "PGR — gratuito para empresas com até 99 funcionários" },
+  { label: "Educação Básica (SESI) — Fundamental e Médio" },
   { label: "Educação Profissional (SENAI) — turmas patrocinadas" },
+  { label: "Convênio UVA — graduação e pós com até 80% de desconto" },
   { label: "Assessoria Tecnológica" },
   { label: "Pesquisa Salarial" },
-  { label: "Aluguel de espaços para eventos" },
+  { label: "Espaços para eventos (Firjan, SESI, SENAI)" },
 ];

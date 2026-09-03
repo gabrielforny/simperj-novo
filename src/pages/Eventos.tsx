@@ -68,7 +68,7 @@ export default function Eventos() {
                 Ações do SIMPERJ
               </h2>
             </Reveal>
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
               {RECENT_ACTIONS.map((action, i) => (
                 <Reveal key={action.slug} id={action.slug} delay={i * 100} className="border border-[var(--border)] rounded-[var(--radius-md)] overflow-hidden">
                   {action.images?.[0] && <img src={action.images[0]} alt={action.name} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
@@ -77,10 +77,37 @@ export default function Eventos() {
                       {action.name}
                     </h3>
                     {action.description && <p className="mt-2 text-sm text-[var(--text-muted)] leading-normal">{action.description}</p>}
+
+                    {action.participants && action.participants.length > 0 && (
+                      <div className="mt-4">
+                        <p className="eyebrow text-[var(--brand-primary)]">Participantes</p>
+                        <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)] list-disc pl-5">
+                          {action.participants.map((p) => (
+                            <li key={p}>{p}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {action.technicalVisits && action.technicalVisits.length > 0 && (
+                      <div className="mt-4">
+                        <p className="eyebrow text-[var(--brand-primary)]">Visitas técnicas</p>
+                        <p className="mt-2 text-sm text-[var(--text-muted)]">{action.technicalVisits.join(", ")}</p>
+                      </div>
+                    )}
+
                     {action.images && action.images.length > 1 && (
                       <div className="mt-4 grid grid-cols-4 gap-2">
-                        {action.images.slice(1, 5).map((src) => (
+                        {action.images.slice(1).map((src) => (
                           <img key={src} src={src} alt="" loading="lazy" className="aspect-square w-full object-cover rounded-[var(--radius-sm)]" />
+                        ))}
+                      </div>
+                    )}
+
+                    {action.videos && action.videos.length > 0 && (
+                      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {action.videos.map((src) => (
+                          <video key={src} src={src} controls preload="none" className="w-full rounded-[var(--radius-sm)] bg-black" />
                         ))}
                       </div>
                     )}

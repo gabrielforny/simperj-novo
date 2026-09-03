@@ -74,6 +74,9 @@ export interface EventItem {
   status: EventStatus;
   description?: string;
   images?: string[];
+  videos?: string[];
+  participants?: string[];
+  technicalVisits?: string[];
 }
 
 export type CourseStatus = "aberto" | "lista-de-espera" | "arquivo";
@@ -136,13 +139,20 @@ export interface NewsPost {
   image: string;
   imageAlt: string;
   legacy?: boolean;
+  /** Conteúdo datado/sazonal (campanhas de mês específico etc.) — não deve
+   * aparecer no destaque de "últimas notícias" da Home fora da própria época,
+   * mesmo que seja, por data, o post mais recente do arquivo. Continua
+   * aparecendo normalmente na listagem completa de /noticias. */
+  seasonal?: boolean;
 }
 
 export interface Associate {
   name: string;
   segment: string;
   address?: string;
-  whatsapp?: string;
+  phone?: string;
+  email?: string;
+  cnpj?: string;
 }
 
 export interface Convenio {

@@ -18,11 +18,13 @@ export default function Noticias() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return NEWS_POSTS.filter((post) => {
-      const matchesCategory = category === "Todas" || post.category === category;
-      const matchesQuery = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q);
-      return matchesCategory && matchesQuery;
-    });
+    return [...NEWS_POSTS]
+      .filter((post) => {
+        const matchesCategory = category === "Todas" || post.category === category;
+        const matchesQuery = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q);
+        return matchesCategory && matchesQuery;
+      })
+      .sort((a, b) => b.date.localeCompare(a.date));
   }, [query, category]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));

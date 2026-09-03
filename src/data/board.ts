@@ -39,16 +39,19 @@ export const PAST_PRESIDENTS: PastPresident[] = [
   { order: 9, name: "Gladstone Santos Junior", period: "01/08/2019 a 31/03/2024" },
 ];
 
-// Fonte: /por-que-se-associar/ — representação do SIMPERJ nos Conselhos Empresariais da Firjan.
+// Fonte: "Por que se associar.docx" enviado pela cliente em 2026-08-26.
+// A página não exibe o nome do conselheiro (pedido da cliente em 2026-08-21) —
+// o campo `representative` fica registrado aqui para referência interna.
 export const COUNCIL_REPRESENTATIVES: CouncilRepresentative[] = [
-  { council: "Conselho Empresarial de Assuntos Tributários", representative: "Gladstone Santos" },
+  { council: "Conselho Empresarial de Assuntos Tributários", representative: "Ronaldo Castilho Thomaz" },
   { council: "Conselho Empresarial de Energia Elétrica", representative: "Antonio Guarino de Sousa" },
   { council: "Conselho Empresarial de Economia", representative: "Ronaldo Castilho Thomaz" },
   { council: "Conselho Empresarial Trabalhista e Sindical", representative: "Franklin Vieira" },
   { council: "Conselho Empresarial de Meio Ambiente", representative: "Rafael Sette" },
-  { council: "Conselho Empresarial de Relações Internacionais", representative: "Fernanda Brites" },
+  { council: "Conselho Empresarial de Relações Internacionais", representative: "" },
   { council: "Conselho Empresarial de Competitividade", representative: "Claudio Patrick Vollers" },
   { council: "Conselho Firjan de Segurança Pública", representative: "Francisco Piragine" },
+  { council: "Conselho da Indústria Criativa", representative: "Márcio Racca" },
 ];
 
 // Fonte: 9 páginas "Conselho Empresarial de..." mescladas em /quem-somos (docs/content-audit.md §2).

@@ -49,7 +49,10 @@ function StatCounter({ stat }: { stat: (typeof STATS)[number] }) {
 }
 
 export default function Home() {
-  const latestNews = NEWS_POSTS.slice(0, 4);
+  const latestNews = [...NEWS_POSTS]
+    .filter((post) => !post.seasonal)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
   const homeActions = [...RECENT_ACTIONS, ...EVENTS.slice(0, 2)].slice(0, 4);
 

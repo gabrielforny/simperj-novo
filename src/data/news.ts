@@ -13,6 +13,7 @@ export const NEWS_POSTS: NewsPost[] = [
     category: "Saúde",
     image: "/assets/news/dezembro-laranja.jpg",
     imageAlt: "Dezembro Laranja: mês de prevenção ao câncer de pele",
+    seasonal: true,
     content: [
       "O mês de dezembro marca a campanha Dezembro Laranja , dedicada à prevenção ao câncer de pele . Com a chegada do verão, é importante reforçar os cuidados: use protetor solar diariamente, evite exposição prolongada ao sol e observe qualquer mudança na pele.",
       "A prevenção é o melhor caminho para uma vida mais saudável! 🍊"

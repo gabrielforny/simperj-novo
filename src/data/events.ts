@@ -5,7 +5,7 @@ import type { EventItem } from "@/types";
 // do Plástico, Fakuma, NPE, etc). Itens sem data confirmada na planilha ("A confirmar")
 // entram com status "em-breve" e sem startDate/endDate.
 export const EVENTS: EventItem[] = [
-  { slug: "interplast-2026-feira-e-congresso-da-tecnologia-do-plastico", name: "Interplast 2026 – Feira e Congresso da Tecnologia do Plástico", category: "feira-nacional", startDate: "2026-08-25", endDate: "2026-08-28", location: "Joinville/SC", status: "aberto", description: "Máquinas, matérias-primas, reciclagem, embalagens, tecnologia e inovação" },
+  { slug: "interplast-2026-feira-e-congresso-da-tecnologia-do-plastico", name: "Interplast 2026 – Feira e Congresso da Tecnologia do Plástico", category: "feira-nacional", startDate: "2026-08-25", endDate: "2026-08-28", location: "Joinville/SC", status: "encerrado", description: "Máquinas, matérias-primas, reciclagem, embalagens, tecnologia e inovação" },
   { slug: "6o-congresso-brasileiro-do-plastico", name: "6º Congresso Brasileiro do Plástico", category: "feira-nacional", startDate: "2026-08-26", endDate: "2026-08-27", location: "Joinville/SC / online", status: "aberto", description: "Inovação, sustentabilidade, economia circular e competitividade" },
   { slug: "feiplar-feipur-2026", name: "FEIPLAR & FEIPUR 2026", category: "feira-nacional", startDate: "2026-08-25", location: "São Paulo/SP", status: "aberto", description: "Termoplásticos, plásticos de engenharia, poliuretano, composites e elastômeros" },
   { slug: "circula-pack-summit-2026", name: "Circula Pack Summit 2026", category: "feira-nacional", startDate: "2026-09-02", location: "São Paulo/SP", status: "aberto", description: "Economia circular, reciclagem e embalagens" },
@@ -36,6 +36,38 @@ export const EVENTS: EventItem[] = [
 ];
 
 export const RECENT_ACTIONS: EventItem[] = [
+  {
+    slug: "simperj-na-interplast-2026",
+    name: "SIMPERJ na Interplast 2026",
+    category: "acao-simperj",
+    startDate: "2026-08-25",
+    endDate: "2026-08-28",
+    location: "Joinville/SC",
+    status: "encerrado",
+    description: "O SIMPERJ participou da Interplast 2026 a convite do SIMME, com representantes da diretoria e de empresas associadas. Além da participação na feira, a missão incluiu visitas técnicas ao SENAI Laser, Ágora Tech, Grupo Alltech, Sullbras e Fastparts, onde o grupo conheceu as estruturas e iniciativas dessas empresas e instituições.",
+    participants: [
+      "Márcio Racca — Galpão 3 — Diretor (também Diretor do SIMPERJ)",
+      "Rodrigo Carnaval — CBS Elos — Diretor (também Diretor do SIMPERJ)",
+      "Claudio Patrick Vollers — Bauen — Vice-Presidente",
+      "Rafael Sette — MMS Plásticos e Soul Ambiental — Diretor",
+      "Plastlab — empresa associada",
+    ],
+    technicalVisits: ["SENAI Laser", "Ágora Tech", "Grupo Alltech", "Sullbras", "Fastparts"],
+    images: [
+      "/assets/events/interplast-2026-01-senai-laser.jpeg",
+      "/assets/events/interplast-2026-02-apresentacao-senai.jpeg",
+      "/assets/events/interplast-2026-03-robo-kuka.jpeg",
+      "/assets/events/interplast-2026-04-ctrob.jpeg",
+      "/assets/events/interplast-2026-05-mao-robotica.jpeg",
+      "/assets/events/interplast-2026-06-estande-feira.jpeg",
+      "/assets/events/interplast-2026-07-cidade-inovacao.jpeg",
+    ],
+    videos: [
+      "/assets/events/video/interplast-2026-01.mp4",
+      "/assets/events/video/interplast-2026-02.mp4",
+      "/assets/events/video/interplast-2026-03.mp4",
+    ],
+  },
   {
     slug: "simperj-na-expofood-2026",
     name: "SIMPERJ na Expofood 2026",
