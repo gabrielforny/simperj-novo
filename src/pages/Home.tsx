@@ -78,7 +78,7 @@ export default function Home() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(7,40,68,0.97) 35%, rgba(7,40,68,0.8) 100%)" }} aria-hidden="true" />
         <Container className="relative pt-20 pb-16 md:pt-28 md:pb-24">
           <Reveal>
-            <h1 className="font-[var(--font-display)] font-extrabold leading-[1.1] max-w-4xl" style={{ fontSize: "var(--text-display)" }}>
+            <h1 className="font-[var(--font-display)] font-extrabold leading-[1.2] max-w-4xl" style={{ fontSize: "clamp(1.375rem, 1.1rem + 1.1vw, 1.875rem)" }}>
               Sindicato da Indústria de Material Plástico do RJ
             </h1>
           </Reveal>
