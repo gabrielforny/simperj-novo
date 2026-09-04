@@ -6,14 +6,49 @@ import type { NewsPost } from "@/types";
 // staging/terceiros, ver docs/assets-to-replace.md).
 export const NEWS_POSTS: NewsPost[] = [
   {
+    slug: "firjan-apresenta-alternativas-a-pec-do-fim-da-escala-6x1",
+    title: "Firjan se reúne com assessorias de senadores e apresenta alternativas à PEC do fim da escala 6x1",
+    excerpt: "Firjan se reuniu com as assessorias dos senadores Flávio Bolsonaro e Carlos Portinho para apresentar dados sobre os impactos da PEC 221/2019, que prevê jornada de 40 horas semanais, e sugerir uma emenda de transição.",
+    date: "2026-08-27",
+    category: "Institucional",
+    image: "/assets/news/forum-plasticos.jpg",
+    imageAlt: "Firjan se reúne com assessorias de senadores e apresenta alternativas à PEC do fim da escala 6x1",
+    content: [
+      "A Firjan se reuniu nesta quarta-feira (26/8) com as assessorias dos senadores Flávio Bolsonaro e Carlos Portinho para reforçar a preocupação com o avanço da PEC 221/2019 (Proposta de Emenda à Constituição 221/2019), que prevê a redução da jornada de trabalho para 40 horas semanais e dois dias de repouso semanais remunerados.",
+      "Durante as reuniões, representantes das gerências de Relações Institucionais e de Relações Trabalhistas da federação apresentaram estudos, dados e análises sobre os potenciais impactos da proposta sobre a indústria e a economia fluminense. Foi defendido que uma eventual mudança na jornada de trabalho seja discutida de forma ampla e responsável, considerando as diferentes realidades dos setores produtivos.",
+      "A partir dos dados apresentados, a Firjan entregou aos gabinetes uma sugestão de emenda com medidas destinadas a mitigar os impactos da PEC. Entre os principais pontos estão:",
+      "Manutenção de apenas um dia de repouso semanal remunerado; possibilidade de que lei, acordo ou convenção coletiva estabeleça regimes e escalas diferenciados, inclusive com distribuição variável dos dias de descanso ao longo do mês; prevalência dos acordos coletivos de trabalho durante seu período de vigência; transição gradual para a jornada de 40 horas semanais, a partir de 2028, com redução de uma hora por ano até 2031.",
+      "A Firjan seguirá atuando junto ao Congresso Nacional, com base em evidências e estudos técnicos, para apresentar os impactos da proposta e defender uma medida que preserve a sustentabilidade das atividades produtivas, a segurança jurídica e a competitividade da indústria.",
+      "Fonte: Firjan"
+    ],
+  },
+  {
+    slug: "setembro-amarelo-mes-de-prevencao-ao-suicidio",
+    title: "Setembro Amarelo: mês de valorização da vida e prevenção ao suicídio",
+    excerpt: "Setembro Amarelo é a campanha nacional de conscientização sobre a prevenção do suicídio e a valorização da vida, com ações de saúde mental voltadas também ao ambiente de trabalho.",
+    date: "2026-09-01",
+    category: "Saúde",
+    image: "/assets/news/setembro-amarelo.jpg",
+    imageAlt: "Setembro Amarelo: mês de valorização da vida e prevenção ao suicídio",
+    seasonal: true,
+    seasonalMonth: 9,
+    content: [
+      "Setembro Amarelo é a campanha nacional de conscientização sobre a prevenção do suicídio e a valorização da vida, criada no Brasil em 2015 pelo Centro de Valorização da Vida (CVV) em parceria com o Conselho Federal de Medicina (CFM) e a Associação Brasileira de Psiquiatria (ABP).",
+      "Ao longo do mês, empresas, sindicatos e entidades de todo o país promovem ações de conscientização sobre saúde mental, buscando romper o tabu em torno do tema e incentivar o diálogo aberto sobre sofrimento psíquico, também no ambiente de trabalho.",
+      "O SIMPERJ reforça a importância de cuidar da saúde mental dos trabalhadores da indústria e reforça o papel do CVV, que atua 24 horas por dia, todos os dias, com atendimento gratuito e sigiloso pelo telefone 188, pelo chat e pelo e-mail, para quem precisar conversar.",
+      "Imagem: Lia Kirch/Trensurb (CC BY 2.0)"
+    ],
+  },
+  {
     slug: "dezembro-laranja-mes-de-prevencao-ao-cancer-de-pele",
     title: "Dezembro Laranja: mês de prevenção ao câncer de pele",
     excerpt: "Dezembro Laranja é a campanha dedicada à prevenção e conscientização sobre o câncer de pele.\nEla reforça a importância da proteção solar e da atenção às mudanças na pele.",
-    date: "2025-12-01",
+    date: "2026-12-01",
     category: "Saúde",
     image: "/assets/news/dezembro-laranja.jpg",
     imageAlt: "Dezembro Laranja: mês de prevenção ao câncer de pele",
     seasonal: true,
+    seasonalMonth: 12,
     content: [
       "O mês de dezembro marca a campanha Dezembro Laranja , dedicada à prevenção ao câncer de pele . Com a chegada do verão, é importante reforçar os cuidados: use protetor solar diariamente, evite exposição prolongada ao sol e observe qualquer mudança na pele.",
       "A prevenção é o melhor caminho para uma vida mais saudável! 🍊"
@@ -829,3 +864,12 @@ export const NEWS_POSTS: NewsPost[] = [
 ];
 
 export const NEWS_CATEGORIES = Array.from(new Set(NEWS_POSTS.map((p) => p.category)));
+
+/** Um post sazonal (ex.: Dezembro Laranja, Setembro Amarelo) só fica visível
+ * dentro do próprio mês do calendário — fora dele fica oculto de /noticias e
+ * da Home, voltando a aparecer sozinho quando o mês chega de novo. Posts sem
+ * `seasonal`/`seasonalMonth` são sempre visíveis. */
+export function isNewsPostVisible(post: NewsPost, now: Date = new Date()): boolean {
+  if (!post.seasonal || post.seasonalMonth === undefined) return true;
+  return now.getMonth() + 1 === post.seasonalMonth;
+}

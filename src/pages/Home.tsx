@@ -11,7 +11,7 @@ import { DocumentCard } from "@/components/cards/DocumentCard";
 import { PartnerLogo } from "@/components/cards/PartnerLogo";
 import { useCountUp } from "@/hooks/useCountUp";
 import { SITE } from "@/data/site";
-import { NEWS_POSTS } from "@/data/news";
+import { NEWS_POSTS, isNewsPostVisible } from "@/data/news";
 import { DOCUMENTS } from "@/data/documents";
 import { PARTNERS } from "@/data/partners";
 import { RECENT_ACTIONS, EVENTS } from "@/data/events";
@@ -50,7 +50,7 @@ function StatCounter({ stat }: { stat: (typeof STATS)[number] }) {
 
 export default function Home() {
   const latestNews = [...NEWS_POSTS]
-    .filter((post) => !post.seasonal)
+    .filter((post) => isNewsPostVisible(post))
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
@@ -78,15 +78,17 @@ export default function Home() {
         <div className="absolute inset-0" style={{ background: "linear-gradient(115deg, rgba(7,40,68,0.97) 35%, rgba(7,40,68,0.8) 100%)" }} aria-hidden="true" />
         <Container className="relative pt-20 pb-16 md:pt-28 md:pb-24">
           <Reveal>
-            <p className="eyebrow text-white/70">Sindicato da Indústria de Material Plástico do RJ</p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-5 font-[var(--font-display)] font-extrabold leading-[1.1] max-w-4xl" style={{ fontSize: "var(--text-display)" }}>
-              Fortalecendo a indústria do plástico no Rio de Janeiro
+            <h1 className="font-[var(--font-display)] font-extrabold leading-[1.1] max-w-4xl" style={{ fontSize: "var(--text-display)" }}>
+              Sindicato da Indústria de Material Plástico do RJ
             </h1>
           </Reveal>
+          <Reveal delay={80}>
+            <p className="mt-5 text-[var(--text-on-brand-muted)] max-w-2xl leading-normal" style={{ fontSize: "var(--text-body-lg)" }}>
+              Fortalecendo a indústria do plástico no Rio de Janeiro
+            </p>
+          </Reveal>
           <Reveal delay={160}>
-            <p className="mt-6 text-[var(--text-on-brand-muted)] max-w-2xl leading-normal" style={{ fontSize: "var(--text-body-lg)" }}>
+            <p className="mt-3 text-[var(--text-on-brand-muted)] max-w-2xl leading-normal" style={{ fontSize: "var(--text-body-lg)" }}>
               Desde 1947, o SIMPERJ representa e fortalece as indústrias de transformação de plástico do Estado do Rio de Janeiro.
             </p>
           </Reveal>

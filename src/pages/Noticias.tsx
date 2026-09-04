@@ -7,7 +7,7 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { NewsCard } from "@/components/cards/NewsCard";
 import { cn } from "@/lib/cn";
-import { NEWS_POSTS, NEWS_CATEGORIES } from "@/data/news";
+import { NEWS_POSTS, NEWS_CATEGORIES, isNewsPostVisible } from "@/data/news";
 
 const PAGE_SIZE = 9;
 
@@ -22,7 +22,7 @@ export default function Noticias() {
       .filter((post) => {
         const matchesCategory = category === "Todas" || post.category === category;
         const matchesQuery = !q || post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q);
-        return matchesCategory && matchesQuery;
+        return matchesCategory && matchesQuery && isNewsPostVisible(post);
       })
       .sort((a, b) => b.date.localeCompare(a.date));
   }, [query, category]);

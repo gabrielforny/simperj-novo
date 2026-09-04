@@ -142,9 +142,13 @@ export interface NewsPost {
   legacy?: boolean;
   /** Conteúdo datado/sazonal (campanhas de mês específico etc.) — não deve
    * aparecer no destaque de "últimas notícias" da Home fora da própria época,
-   * mesmo que seja, por data, o post mais recente do arquivo. Continua
-   * aparecendo normalmente na listagem completa de /noticias. */
+   * mesmo que seja, por data, o post mais recente do arquivo. */
   seasonal?: boolean;
+  /** Mês (1-12) em que a campanha sazonal é relevante — ex.: 12 para Dezembro
+   * Laranja, 9 para Setembro Amarelo. Quando definido junto com `seasonal`,
+   * o post fica oculto em /noticias e na Home fora desse mês do calendário,
+   * voltando a aparecer automaticamente todo ano quando o mês chega. */
+  seasonalMonth?: number;
 }
 
 export interface Associate {
