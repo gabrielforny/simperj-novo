@@ -81,6 +81,9 @@ export interface EventItem {
    * o item sai do bloco "O sindicato em movimento" da Home automaticamente,
    * mas continua registrado na agenda completa de /eventos. */
   featuredUntil?: string;
+  /** Como exibir a imagem principal: "cover" (padrão, foto que pode ser
+   * recortada) ou "contain" (arte/flyer que precisa aparecer inteiro). */
+  imageFit?: "cover" | "contain";
 }
 
 export type CourseStatus = "aberto" | "lista-de-espera" | "arquivo";

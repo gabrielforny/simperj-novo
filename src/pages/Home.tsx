@@ -54,7 +54,8 @@ export default function Home() {
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
-  const homeActions = [...RECENT_ACTIONS.filter((a) => isActionFeatured(a)), ...EVENTS.slice(0, 2)].slice(0, 4);
+  const featuredActions = RECENT_ACTIONS.filter((a) => a.featuredUntil && isActionFeatured(a));
+  const homeActions = [...RECENT_ACTIONS.filter((a) => !a.featuredUntil), ...EVENTS.slice(0, 2)].slice(0, 4);
 
   return (
     <>
@@ -162,6 +163,50 @@ export default function Home() {
       <Section spacing="lg">
         <Container>
           <SectionHeader eyebrow="Ações e eventos" title="O sindicato em movimento" lead="Participações e representações recentes do SIMPERJ junto ao setor." />
+
+          {featuredActions.map((action) => (
+            <Reveal
+              key={action.slug}
+              className="mt-12 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--brand-primary-dark)] text-white"
+            >
+              <div className="grid md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                {action.images?.[0] && (
+                  <div className="flex items-center justify-center bg-white p-4 md:p-6">
+                    <img
+                      src={action.images[0]}
+                      alt={`Arte de divulgação — ${action.name}`}
+                      loading="lazy"
+                      className="max-h-[24rem] w-full object-contain"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-col justify-center p-6 md:p-8">
+                  {(action.startDate || action.location) && (
+                    <p className="eyebrow text-white/70">
+                      {action.startDate ? formatDateShort(action.startDate) : ""}
+                      {action.startDate && action.location ? " · " : ""}
+                      {action.location ?? ""}
+                    </p>
+                  )}
+                  <h3 className="mt-2 font-[var(--font-display)] font-semibold leading-snug" style={{ fontSize: "var(--text-h3)" }}>
+                    {action.name}
+                  </h3>
+                  {action.description && <p className="mt-3 text-sm text-white/80 leading-normal max-w-xl">{action.description}</p>}
+                  {action.url && (
+                    <a
+                      href={action.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-[var(--radius-sm)] bg-white px-4 py-2.5 text-sm font-semibold text-[var(--brand-primary-dark)] transition-colors hover:bg-white/90"
+                    >
+                      Inscreva-se no evento <ArrowRight size={16} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {homeActions.map((action, i) => {
               const image = action.images?.[0];
@@ -176,8 +221,8 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[var(--brand-primary-dark)]" aria-hidden="true" />
                   )}
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    {(action.featuredUntil || !image) && (action.startDate || action.location) && (
-                      <p className="eyebrow text-white/70 mb-2">
+                    {!image && (action.startDate || action.location) && (
+                      <p className="eyebrow text-white/60 mb-2">
                         {action.startDate ? formatDateShort(action.startDate) : ""}
                         {action.startDate && action.location ? " · " : ""}
                         {action.location ?? ""}
@@ -187,16 +232,6 @@ export default function Home() {
                       {action.name}
                     </h3>
                     {action.description && <p className="mt-2 text-sm text-white/80 leading-normal max-w-md">{action.description}</p>}
-                    {action.url && (
-                      <a
-                        href={action.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:underline"
-                      >
-                        Inscreva-se <ArrowRight size={14} aria-hidden="true" />
-                      </a>
-                    )}
                   </div>
                 </Reveal>
               );

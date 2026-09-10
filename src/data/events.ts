@@ -45,6 +45,7 @@ export const RECENT_ACTIONS: EventItem[] = [
     location: "Rio de Janeiro/RJ",
     status: "aberto",
     featuredUntil: "2026-09-22",
+    imageFit: "contain",
     url: "https://www.sympla.com.br/evento/vip-day-rj/3563120",
     description:
       "Depois de duas edições no Rio Grande do Sul e em Santa Catarina, o VIP Day chega ao Rio de Janeiro. O encontro reúne profissionais e especialistas para discutir inovação, sustentabilidade, materiais, tecnologia e tendências de cores para a indústria do plástico. Evento gratuito, dia 22/09/2026, das 08h30 às 12h00, com a participação do diretor do SIMPERJ Rafael Sette (MMS Plásticos e Instituto Soul Ambiental).",

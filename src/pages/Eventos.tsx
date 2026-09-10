@@ -71,7 +71,14 @@ export default function Eventos() {
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
               {RECENT_ACTIONS.map((action, i) => (
                 <Reveal key={action.slug} id={action.slug} delay={i * 100} className="border border-[var(--border)] rounded-[var(--radius-md)] overflow-hidden">
-                  {action.images?.[0] && <img src={action.images[0]} alt={action.name} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
+                  {action.images?.[0] &&
+                    (action.imageFit === "contain" ? (
+                      <div className="flex items-center justify-center bg-white p-4">
+                        <img src={action.images[0]} alt={`Arte de divulgação — ${action.name}`} loading="lazy" className="max-h-[28rem] w-full object-contain" />
+                      </div>
+                    ) : (
+                      <img src={action.images[0]} alt={action.name} loading="lazy" className="aspect-[16/9] w-full object-cover" />
+                    ))}
                   <div className="p-6">
                     <h3 className="font-[var(--font-display)] font-semibold text-[var(--text)]" style={{ fontSize: "var(--text-h4)" }}>
                       {action.name}
