@@ -1,4 +1,4 @@
-import { Globe2, Plane, Rss } from "lucide-react";
+import { Globe2, Plane, Rss, ExternalLink } from "lucide-react";
 import { Seo } from "@/components/layout/Seo";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
@@ -77,6 +77,17 @@ export default function Eventos() {
                       {action.name}
                     </h3>
                     {action.description && <p className="mt-2 text-sm text-[var(--text-muted)] leading-normal">{action.description}</p>}
+
+                    {action.url && (
+                      <a
+                        href={action.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-primary)] hover:underline"
+                      >
+                        Inscreva-se no evento <ExternalLink size={14} aria-hidden="true" />
+                      </a>
+                    )}
 
                     {action.participants && action.participants.length > 0 && (
                       <div className="mt-4">

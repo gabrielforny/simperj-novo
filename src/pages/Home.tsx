@@ -14,7 +14,7 @@ import { SITE } from "@/data/site";
 import { NEWS_POSTS, isNewsPostVisible } from "@/data/news";
 import { DOCUMENTS } from "@/data/documents";
 import { PARTNERS } from "@/data/partners";
-import { RECENT_ACTIONS, EVENTS } from "@/data/events";
+import { RECENT_ACTIONS, EVENTS, isActionFeatured } from "@/data/events";
 import { formatDateShort } from "@/lib/format";
 import { MISSION_STATEMENT } from "@/data/history";
 import { ContactSummaryForm } from "@/components/sections/ContactSummaryForm";
@@ -54,7 +54,7 @@ export default function Home() {
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, 4);
   const featuredDocs = DOCUMENTS.slice(0, 3);
-  const homeActions = [...RECENT_ACTIONS, ...EVENTS.slice(0, 2)].slice(0, 4);
+  const homeActions = [...RECENT_ACTIONS.filter((a) => isActionFeatured(a)), ...EVENTS.slice(0, 2)].slice(0, 4);
 
   return (
     <>
@@ -176,8 +176,8 @@ export default function Home() {
                     <div className="absolute inset-0 bg-[var(--brand-primary-dark)]" aria-hidden="true" />
                   )}
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    {!image && (action.startDate || action.location) && (
-                      <p className="eyebrow text-white/60 mb-2">
+                    {(action.featuredUntil || !image) && (action.startDate || action.location) && (
+                      <p className="eyebrow text-white/70 mb-2">
                         {action.startDate ? formatDateShort(action.startDate) : ""}
                         {action.startDate && action.location ? " · " : ""}
                         {action.location ?? ""}
@@ -187,6 +187,16 @@ export default function Home() {
                       {action.name}
                     </h3>
                     {action.description && <p className="mt-2 text-sm text-white/80 leading-normal max-w-md">{action.description}</p>}
+                    {action.url && (
+                      <a
+                        href={action.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:underline"
+                      >
+                        Inscreva-se <ArrowRight size={14} aria-hidden="true" />
+                      </a>
+                    )}
                   </div>
                 </Reveal>
               );

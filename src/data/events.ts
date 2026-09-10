@@ -10,6 +10,7 @@ export const EVENTS: EventItem[] = [
   { slug: "feiplar-feipur-2026", name: "FEIPLAR & FEIPUR 2026", category: "feira-nacional", startDate: "2026-08-25", location: "São Paulo/SP", status: "aberto", description: "Termoplásticos, plásticos de engenharia, poliuretano, composites e elastômeros" },
   { slug: "circula-pack-summit-2026", name: "Circula Pack Summit 2026", category: "feira-nacional", startDate: "2026-09-02", location: "São Paulo/SP", status: "aberto", description: "Economia circular, reciclagem e embalagens" },
   { slug: "grafenoplast", name: "Grafenoplast", category: "feira-nacional", startDate: "2026-09-09", location: "São Paulo/SP", status: "aberto", description: "Novos materiais, grafeno e tecnologia para plásticos" },
+  { slug: "vip-day-rj-2026", name: "VIP Day RJ 2026 – Inovação, Cor e Sustentabilidade", category: "feira-nacional", startDate: "2026-09-22", location: "Rio de Janeiro/RJ", status: "aberto", url: "https://www.sympla.com.br/evento/vip-day-rj/3563120", description: "Depois de edições no Rio Grande do Sul e em Santa Catarina, o VIP Day chega ao Rio de Janeiro. Encontro sobre inovação, sustentabilidade, materiais, tecnologia e tendências de cores para a indústria do plástico. Evento gratuito, das 08h30 às 12h00, com ColorWorks & ColorForward 2027, Gallery Walk e painel sobre inovação, cor e sustentabilidade." },
   { slug: "16o-forum-competitividade", name: "16º Fórum Competitividade", category: "feira-nacional", startDate: "2026-10-14", location: "São Paulo/SP", status: "aberto", description: "Competitividade e indústria" },
   { slug: "fakuma-2026", name: "Fakuma 2026", category: "feira-internacional", startDate: "2026-10-12", endDate: "2026-10-16", location: "Friedrichshafen, Alemanha", status: "aberto", description: "Transformação de plásticos, máquinas, automação, materiais e reciclagem" },
   { slug: "pack-expo-international-2026", name: "PACK EXPO International 2026", category: "feira-internacional", startDate: "2026-10-18", endDate: "2026-10-21", location: "Chicago, EUA", status: "aberto", description: "Embalagens, automação e tecnologia" },
@@ -36,6 +37,19 @@ export const EVENTS: EventItem[] = [
 ];
 
 export const RECENT_ACTIONS: EventItem[] = [
+  {
+    slug: "vip-day-rj-2026",
+    name: "VIP Day RJ 2026 — Inovação, Cor e Sustentabilidade",
+    category: "acao-simperj",
+    startDate: "2026-09-22",
+    location: "Rio de Janeiro/RJ",
+    status: "aberto",
+    featuredUntil: "2026-09-22",
+    url: "https://www.sympla.com.br/evento/vip-day-rj/3563120",
+    description:
+      "Depois de duas edições no Rio Grande do Sul e em Santa Catarina, o VIP Day chega ao Rio de Janeiro. O encontro reúne profissionais e especialistas para discutir inovação, sustentabilidade, materiais, tecnologia e tendências de cores para a indústria do plástico. Evento gratuito, dia 22/09/2026, das 08h30 às 12h00, com a participação do diretor do SIMPERJ Rafael Sette (MMS Plásticos e Instituto Soul Ambiental).",
+    images: ["/assets/events/vip-day-rj-2026.jpeg"],
+  },
   {
     slug: "simperj-na-interplast-2026",
     name: "SIMPERJ na Interplast 2026",
@@ -86,20 +100,11 @@ export const RECENT_ACTIONS: EventItem[] = [
       "/assets/events/expofood-2026-08.png",
     ],
   },
-  {
-    slug: "feira-k-2025",
-    name: "Feira K 2025 — O Futuro da Indústria de Plásticos e Borracha",
-    category: "acao-simperj",
-    startDate: "2025-10-20",
-    status: "encerrado",
-    description: "A Feira K, na Alemanha, é o maior evento do setor. A participação do Sr. Cláudio Patrick reforça nosso compromisso com inovação e sustentabilidade.",
-    images: [
-      "/assets/events/feira-k-2025-01.jpg",
-      "/assets/events/feira-k-2025-02.jpg",
-      "/assets/events/feira-k-2025-03.jpg",
-      "/assets/events/feira-k-2025-04.jpg",
-      "/assets/events/feira-k-2025-05.jpg",
-      "/assets/events/feira-k-2025-06.jpg",
-    ],
-  },
 ];
+
+/** Um item com `featuredUntil` só fica em destaque na Home até essa data
+ * (inclusive). Itens sem `featuredUntil` são sempre elegíveis ao destaque. */
+export function isActionFeatured(action: EventItem, now: Date = new Date()): boolean {
+  if (!action.featuredUntil) return true;
+  return now <= new Date(`${action.featuredUntil}T23:59:59`);
+}

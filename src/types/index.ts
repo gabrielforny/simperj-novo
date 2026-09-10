@@ -77,6 +77,10 @@ export interface EventItem {
   videos?: string[];
   participants?: string[];
   technicalVisits?: string[];
+  /** Ação/evento em destaque na Home só até esta data (YYYY-MM-DD). Depois dela,
+   * o item sai do bloco "O sindicato em movimento" da Home automaticamente,
+   * mas continua registrado na agenda completa de /eventos. */
+  featuredUntil?: string;
 }
 
 export type CourseStatus = "aberto" | "lista-de-espera" | "arquivo";
