@@ -11,6 +11,7 @@ export const EVENTS: EventItem[] = [
   { slug: "circula-pack-summit-2026", name: "Circula Pack Summit 2026", category: "feira-nacional", startDate: "2026-09-02", location: "São Paulo/SP", status: "aberto", description: "Economia circular, reciclagem e embalagens" },
   { slug: "grafenoplast", name: "Grafenoplast", category: "feira-nacional", startDate: "2026-09-09", location: "São Paulo/SP", status: "aberto", description: "Novos materiais, grafeno e tecnologia para plásticos" },
   { slug: "vip-day-rj-2026", name: "VIP Day RJ 2026 – Inovação, Cor e Sustentabilidade", category: "feira-nacional", startDate: "2026-09-22", location: "Rio de Janeiro/RJ", status: "aberto", url: "https://www.sympla.com.br/evento/vip-day-rj/3563120", description: "Depois de edições no Rio Grande do Sul e em Santa Catarina, o VIP Day chega ao Rio de Janeiro. Encontro sobre inovação, sustentabilidade, materiais, tecnologia e tendências de cores para a indústria do plástico. Evento gratuito, das 08h30 às 12h00, com ColorWorks & ColorForward 2027, Gallery Walk e painel sobre inovação, cor e sustentabilidade." },
+  { slug: "2a-palestra-reforma-tributaria", name: "2ª Palestra sobre a Reforma Tributária", category: "online", startDate: "2026-10-01", location: "Online (Zoom)", status: "aberto", url: "https://us06web.zoom.us/j/87060088199", description: "Dando continuidade ao ciclo de palestras sobre a Reforma Tributária, o SIMPERJ convida associados e não associados para o segundo encontro: cenários, impactos e perspectivas para a sua empresa. Palestrante: Gledson Santos, da Ativo Advisory. Dia 01/10/2026 (quinta-feira), às 14h, online via Zoom (ID da reunião: 870 6008 8199)." },
   { slug: "16o-forum-competitividade", name: "16º Fórum Competitividade", category: "feira-nacional", startDate: "2026-10-14", location: "São Paulo/SP", status: "aberto", description: "Competitividade e indústria" },
   { slug: "fakuma-2026", name: "Fakuma 2026", category: "feira-internacional", startDate: "2026-10-12", endDate: "2026-10-16", location: "Friedrichshafen, Alemanha", status: "aberto", description: "Transformação de plásticos, máquinas, automação, materiais e reciclagem" },
   { slug: "pack-expo-international-2026", name: "PACK EXPO International 2026", category: "feira-internacional", startDate: "2026-10-18", endDate: "2026-10-21", location: "Chicago, EUA", status: "aberto", description: "Embalagens, automação e tecnologia" },
@@ -37,6 +38,19 @@ export const EVENTS: EventItem[] = [
 ];
 
 export const RECENT_ACTIONS: EventItem[] = [
+  {
+    slug: "2a-palestra-reforma-tributaria",
+    name: "2ª Palestra sobre a Reforma Tributária",
+    category: "acao-simperj",
+    startDate: "2026-10-01",
+    location: "Online (Zoom)",
+    status: "aberto",
+    featuredUntil: "2026-10-01",
+    url: "https://us06web.zoom.us/j/87060088199",
+    description:
+      "Dando continuidade ao ciclo de palestras sobre a Reforma Tributária, o SIMPERJ convida associados e não associados para o segundo encontro: cenários, impactos e perspectivas para a sua empresa. Palestrante: Gledson Santos, da Ativo Advisory. Dia 01/10/2026 (quinta-feira), às 14h, online via Zoom (ID da reunião: 870 6008 8199).",
+    images: ["/assets/events/palestra-reforma-tributaria-2026.jpeg"],
+  },
   {
     slug: "vip-day-rj-2026",
     name: "VIP Day RJ 2026 — Inovação, Cor e Sustentabilidade",
