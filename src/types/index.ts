@@ -97,6 +97,24 @@ export interface Course {
   audience: string;
   prerequisite: string;
   status: CourseStatus;
+  /** Instituição/unidade ofertante, ex.: "SENAI Três Rios". */
+  institution?: string;
+  /** Endereço da unidade e/ou de realização do curso, quando enviado pelo parceiro. */
+  address?: string;
+  /** Ex.: "Qualificação Profissional", "Aperfeiçoamento Profissional". */
+  modality?: string;
+  /** Ex.: "Noite", "Tarde", "Manhã". */
+  shift?: string;
+  /** Faixa de horário das aulas, ex.: "18:00 às 22:00". */
+  schedule?: string;
+  /** Dias da semana em que o curso ocorre, ex.: "2ª a 6ª". */
+  weekdays?: string;
+  /** Ex.: "Presencial", "EAD", "Semipresencial". */
+  strategy?: string;
+  /** Data prevista de início (YYYY-MM-DD). */
+  startDate?: string;
+  /** Data prevista de término (YYYY-MM-DD). */
+  endDate?: string;
 }
 
 export type DocumentCategory =
