@@ -45,8 +45,11 @@ export default function Cursos() {
             <div className="grid gap-6 lg:grid-cols-2">
               {COURSES.map((course, i) => (
                 <Reveal key={course.slug} id={course.slug} delay={i * 100} className="border border-[var(--border)] rounded-[var(--radius-md)] p-6">
-                  <p className="eyebrow text-[var(--brand-primary)]">{course.institution ?? "Programa de Qualificação Setorial SENAI-RJ"}</p>
-                  <h3 className="mt-1 font-[var(--font-display)] font-semibold text-[var(--text)]" style={{ fontSize: "var(--text-h4)" }}>
+                  <p className="flex items-center gap-2 font-[var(--font-display)] font-bold text-[var(--brand-primary)]" style={{ fontSize: "var(--text-h4)" }}>
+                    <MapPin size={20} strokeWidth={2} className="shrink-0" aria-hidden="true" />
+                    {course.institution ?? "Programa de Qualificação Setorial SENAI-RJ"}
+                  </p>
+                  <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]" style={{ fontSize: "var(--text-h4)" }}>
                     {course.name}
                   </h3>
                   {course.modality && <p className="mt-1 text-sm text-[var(--text-muted)]">{course.modality}</p>}
