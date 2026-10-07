@@ -7,9 +7,7 @@ import { SITE } from "@/data/site";
 import { CONVENIOS, CONVENIOS_INTRO } from "@/data/convenios";
 import { DOCUMENTS } from "@/data/documents";
 
-const CONVENIO_MATERIALS: Record<string, string[]> = {
-  "Universidade Veiga de Almeida (UVA)": ["uva-pos-online-mes-do-cliente-folder", "uva-pos-online-passo-a-passo-cupom"],
-};
+const CONVENIO_MATERIALS: Record<string, string[]> = {};
 
 export default function Convenios() {
   return (
@@ -41,43 +39,65 @@ export default function Convenios() {
             </div>
           ) : (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {CONVENIOS.map((c) => {
+              {CONVENIOS.map((c, i) => {
                 const materials = (CONVENIO_MATERIALS[c.company] ?? [])
                   .map((slug) => DOCUMENTS.find((d) => d.slug === slug))
                   .filter((d): d is NonNullable<typeof d> => Boolean(d));
 
                 return (
-                  <div key={c.company} className="border border-[var(--border)] rounded-[var(--radius-md)] p-5">
-                    <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
-                    <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
-                    <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
-                    <p className="mt-3 text-sm font-semibold text-[var(--brand-secondary)]">{c.benefit}</p>
-                    {c.link && (
-                      <a
-                        href={c.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-primary)] hover:underline"
-                      >
-                        Acessar inscrições <ExternalLink size={14} aria-hidden="true" />
-                      </a>
-                    )}
-                    {materials.length > 0 && (
-                      <ul className="mt-3 space-y-1.5 border-t border-[var(--border)] pt-3">
-                        {materials.map((doc) => (
-                          <li key={doc.slug}>
-                            <a
-                              href={doc.file}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--brand-primary)] hover:underline"
-                            >
-                              <FileText size={14} aria-hidden="true" className="shrink-0" /> {doc.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                  <div key={`${c.company}-${i}`} className="border border-[var(--border)] rounded-[var(--radius-md)] overflow-hidden">
+                    {c.image && <img src={c.image} alt={`Arte de divulgação — ${c.company}`} loading="lazy" className="w-full object-cover" />}
+                    <div className="p-5">
+                      <p className="eyebrow text-[var(--brand-primary)]">{c.category}</p>
+                      <h3 className="mt-2 font-[var(--font-display)] font-semibold text-[var(--text)]">{c.company}</h3>
+                      <p className="mt-2 text-sm text-[var(--text-muted)]">{c.description}</p>
+                      <p className="mt-3 text-sm font-semibold text-[var(--brand-secondary)]">{c.benefit}</p>
+                      {c.link && (
+                        <a
+                          href={c.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--brand-primary)] hover:underline"
+                        >
+                          Acessar inscrições <ExternalLink size={14} aria-hidden="true" />
+                        </a>
+                      )}
+                      {c.contact && (
+                        <div className="mt-3 text-sm text-[var(--text-muted)] space-y-0.5">
+                          {c.contact.name && <p className="font-medium text-[var(--text)]">{c.contact.name}</p>}
+                          {c.contact.phone && (
+                            <p>
+                              <a href={`https://wa.me/55${c.contact.phone.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="hover:text-[var(--brand-primary)] hover:underline">
+                                {c.contact.phone}
+                              </a>
+                            </p>
+                          )}
+                          {c.contact.email && (
+                            <p>
+                              <a href={`mailto:${c.contact.email}`} className="hover:text-[var(--brand-primary)] hover:underline">
+                                {c.contact.email}
+                              </a>
+                            </p>
+                          )}
+                        </div>
+                      )}
+                      {materials.length > 0 && (
+                        <ul className="mt-3 space-y-1.5 border-t border-[var(--border)] pt-3">
+                          {materials.map((doc) => (
+                            <li key={doc.slug}>
+                              <a
+                                href={doc.file}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 text-sm text-[var(--text-muted)] hover:text-[var(--brand-primary)] hover:underline"
+                              >
+                                <FileText size={14} aria-hidden="true" className="shrink-0" /> {doc.title}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 );
               })}

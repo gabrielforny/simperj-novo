@@ -192,4 +192,12 @@ export interface Convenio {
   benefit: string;
   logo?: string;
   link?: string;
+  /** Arte/flyer de divulgação da campanha, quando enviada pelo parceiro. */
+  image?: string;
+  /** Contato direto do parceiro para dúvidas/simulação (nome, telefone, e-mail). */
+  contact?: {
+    name?: string;
+    phone?: string;
+    email?: string;
+  };
 }
